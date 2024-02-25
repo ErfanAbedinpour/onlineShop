@@ -1,0 +1,24 @@
+USER=> CRUD,Buy 
+USER_ATTR=>userName,Phone Or email,password,Purchased,role
+
+-------------------------------------------------------------------------------------------------->
+
+ADMIN=> CRUD, DeleteProduct, AddProduct, CreateAdmin,Change_User_Password,
+ADMIN_ATTR=>userName,Phone Or email,password,Cart,Purchased,role
+
+--------------------------------------------------------------------------------------------------->
+
+PRODUCT=>CRUD
+PRODUCT_ATTR=>name,category:["computer","graphic","accounting"],count,star,Like,Price,user
+
+--------------------------------------------------------------------------------------------------->
+
+CART=>CRUD,
+CART_ATTR=>CartNumber,TotalPrice,itemCount,user
+
+---------------------------------------------------------------------------------------------------->
+ 
+PURCHESE=>uuid,TotlaPrice,User,CountOfProduct
+PURCHESE_ATTR=>CRUD
+
+----------------------------------------------------------------------------------------------------
