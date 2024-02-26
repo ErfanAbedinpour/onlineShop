@@ -40,6 +40,7 @@ const singup = async (req, res) => {
   delete userObj["password"];
   delete userObj["__v"];
   //Send Response
+  //here must Render Login Page
   res.json({
     status: true,
     msg: "User Register succsesfully",
@@ -58,6 +59,7 @@ const login = async (req, res) => {
     const userObj = user.toObject();
     Reflect.deleteProperty(userObj, "password");
     Reflect.deleteProperty(userObj, "__v");
+    //here must Load Home Page
     return res.status(200).json({
       status: true,
       msg: "Login succsesfully",
@@ -93,7 +95,51 @@ const login = async (req, res) => {
   });
 };
 
+const resetPassword = async (req, res) => {
+  //Get User identofied if exsist on DB Got To Change it
+  const { identified } = req.body;
+  const user = await userModel.findOne({
+    identified,
+  });
+  if (!user) {
+    return res.status(401).json({
+      status: false,
+      msg: "User Does Not Found",
+    });
+  }
+  const token = jsonwebtoken.sign({ identified }, process.env["KEY"], {
+    expiresIn: "20min",
+  });
+  //Here Must Render Change Password Page with token
+  res.json({
+    status: true,
+    msg: "Ok",
+  });
+};
+
+const changePassword = async (req, res) => {
+  const { token } = req.params;
+  const { identified } = jsonwebtoken.verify(token, process.env["KEY"]);
+  const { password } = req.body;
+  const HashPass = await bcrypt.hash(password, 11);
+  await userModel.findByIdAndUpdate(
+    {
+      identified,
+    },
+    {
+      $set: { password: HashPass },
+    }
+  );
+  //Here  Must Render Page
+  res.json({
+    status: true,
+    msg: "Password Changed Succsesfully",
+  });
+};
+
 module.exports = {
   singup,
   login,
+  resetPassword,
+  changePassword,
 };

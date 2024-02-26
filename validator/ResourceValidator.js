@@ -37,7 +37,12 @@ const login = joi.object({
   password: joi.string().required(),
 });
 
+const changePassword = joi.object({
+  password: joi.string().min(8).required(),
+  confirmPassword: joi.ref("password"),
+});
 module.exports = {
   singUp,
   login,
+  changePassword,
 };
