@@ -6,6 +6,7 @@ const validator = (schema) => {
       next();
     } catch (error) {
       const err = error.message.split('"').join("").trim();
+      //Retuen Current Error And Redirect To Current Page
       return res.json({
         status: false,
         msg: err,

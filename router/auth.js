@@ -12,6 +12,7 @@ const validator = require("../middlewares/validator.middleware");
 const {
   singUp,
   login: loginValidator,
+  changePassword: changePasswordValidator,
 } = require("../validator/ResourceValidator");
 //router
 
@@ -28,14 +29,18 @@ router.post("/login", validator(loginValidator), login);
 
 //ChangePasswordRouters
 router.get("/reset-password", (req, res) => {}); //Render just Email Page
-router.get("/change-password", resetPassword); // Render change Page after Check Email
+router.get("/change-password", validator(), resetPassword); // Render change Page after Check Email
 //Render Change password Page
 router.get("/change-password:token", (req, res) => {
   const { token } = req.params;
   req.flash("token", token);
   res.render("Pages"); // this is must Send Token And In Front Click on Action this token Send With Post to Backend
 }); // Render Change Password Page
-router.post("/change-password:token", changePassword); // Change Password
+router.post(
+  "/change-password:token",
+  validator(changePasswordValidator),
+  changePassword
+); // Change Password
 
 //exports
 module.exports = router;
