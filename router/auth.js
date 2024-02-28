@@ -13,7 +13,7 @@ const {
   singUp,
   login: loginValidator,
   changePassword: changePasswordValidator,
-} = require("../validator/ResourceValidator");
+} = require("../validator/authResource");
 //router
 
 const router = Router();

@@ -25,7 +25,7 @@ const singup = async (req, res) => {
     userName: data.userName,
     password: HashPass,
     identified: data.identified,
-    role: countOfDoc <= 0 ? "ADMIN" : "USER",
+    role: countOfDoc == 0 ? "ADMIN" : "USER",
   });
   //Generate Token
   const token = jsonwebtoken.sign({ id: user._id }, process.env["KEY"], {

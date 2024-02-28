@@ -10,14 +10,10 @@ const singUp = joi.object({
     is: "email",
     then: joi.string().email().required(),
   }),
-
   identified: joi
     .string()
     .min(9)
-    .max(11)
     .when("method", { is: "phone", then: joi.required() }),
-
-  role: joi.string().required(),
   password: joi.string().min(8).required(),
   confirmPassword: joi.ref("password"),
 });
@@ -41,6 +37,7 @@ const changePassword = joi.object({
   password: joi.string().min(8).required(),
   confirmPassword: joi.ref("password"),
 });
+
 module.exports = {
   singUp,
   login,

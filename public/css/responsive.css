@@ -1,0 +1,632 @@
+
+/*==========  Mobile First Method  ==========*/
+
+/* Custom, iPhone Retina */
+@media screen and  (max-width: 320px) and (min-width: 0px) {
+    /*hero slider*/
+    .hero-content h1{
+        font-size: 30px;
+        line-height: 35px;
+    }
+
+    .hero-content-wrap-1{
+        height: auto;
+        padding-top: 30px;
+    }
+    .hero-content-wrap{
+        height: auto;
+        padding-top: 100px;
+    }
+    .typed-strings h1{
+        font-size: 20px;
+        line-height: 24px;
+    }
+
+    .slider-bg-content .hero-image{
+        display: none;
+    }
+
+    .hero-action-btn a{
+        margin-bottom: 15px;
+    }
+    .hero-slider-section-two .section-shape{
+        position: relative;
+    }
+
+    /*features*/
+    .feature-box.feature-box-lefticon, .feature-box.feature-box-righticon {
+        padding: 1.15em 1em;
+    }
+
+    .feature-heading{
+        text-align: center;
+    }
+    .mt-100{
+        margin-top: 0;
+    }
+
+    /*pricing*/
+    .plan-description{
+        margin-left: 0;
+    }
+
+    /*download section*/
+    .download-btn{
+        width: 100%;
+        padding: 5px 50px;
+    }
+    .download-app-button{
+        display: block;
+    }
+
+    /*product details popup*/
+    .product-details-wrap img{
+        margin-bottom: 15px;
+    }
+    .single-product-feature-list li{
+        width: 50%;
+        font-size: 12px;
+        line-height: 14px;
+        font-weight: normal;
+        margin: 10px 0;
+    }
+
+}
+
+/* Custom, iPhone Retina */
+@media screen and (max-width: 360px) and (min-width: 321px) {
+    /*hero slider*/
+    .hero-content h1{
+        font-size: 30px;
+        line-height: 35px;
+    }
+
+    .hero-content-wrap-1{
+        height: auto;
+        padding-top: 30px;
+    }
+    .hero-content-wrap{
+        height: auto;
+        padding-top: 100px;
+    }
+
+    .typed-strings h1{
+        font-size: 20px;
+        line-height: 24px;
+    }
+
+    .slider-bg-content .hero-image{
+        display: none;
+    }
+
+    .hero-action-btn a{
+        margin-bottom: 15px;
+    }
+
+    .hero-slider-section-two .section-shape{
+        position: relative;
+    }
+
+    /*features*/
+    .feature-box.feature-box-lefticon, .feature-box.feature-box-righticon {
+        padding: 1.15em 1em;
+    }
+
+    .feature-heading{
+        text-align: center;
+    }
+    .mt-100{
+        margin-top: 0;
+    }
+
+    /*video overly*/
+    .overlay{
+        padding: 100px 0;
+    }
+
+    /*download section*/
+    .download-btn{
+        width: 100%;
+        padding: 5px 50px;
+        display: block;
+    }
+    .download-app-button{
+        display: block;
+    }
+    .download-btn span{
+        display: none;
+    }
+
+    /*product details popup*/
+    .product-details-wrap img{
+        margin-bottom: 15px;
+    }
+    .single-product-feature-list li{
+        width: 50%;
+        font-size: 12px;
+        line-height: 14px;
+        font-weight: normal;
+        margin: 10px 0;
+    }
+
+}
+
+/* Custom, iPhone Retina */
+@media screen and (max-width: 375px) and (min-width: 361px) {
+    /*hero slider*/
+    .hero-content h1{
+        font-size: 30px;
+        line-height: 35px;
+    }
+
+    .hero-content-wrap-1{
+        height: auto;
+        padding-top: 30px;
+    }
+
+    .hero-content-wrap{
+        height: auto;
+        padding-top: 100px;
+    }
+
+    .typed-strings h1{
+        font-size: 20px;
+        line-height: 24px;
+    }
+
+    .slider-bg-content .hero-image{
+        display: none;
+    }
+
+    .hero-action-btn a{
+        margin-bottom: 15px;
+    }
+
+    .hero-slider-section-two .section-shape{
+        position: relative;
+    }
+
+    /*features*/
+    .feature-box.feature-box-lefticon, .feature-box.feature-box-righticon {
+        padding: 1.15em 1em;
+    }
+    .feature-heading{
+        text-align: center;
+    }
+    .mt-100{
+        margin-top: 0;
+    }
+
+    /*video overly*/
+    .overlay{
+        padding: 100px 0;
+    }
+
+    /*download section*/
+     .download-btn{
+        width: 100%;
+        padding: 5px 50px;
+        display: block;
+    }
+    .download-app-button{
+        display: block;
+    }
+    .download-btn span{
+        display: none;
+    }
+    /*product details popup*/
+    .product-details-wrap img{
+        margin-bottom: 15px;
+    }
+    .single-product-feature-list li{
+        width: 50%;
+        font-size: 12px;
+        line-height: 14px;
+        font-weight: normal;
+        margin: 10px 0;
+    }
+
+}
+
+/* Extra Small Devices, Phones */
+@media screen and (max-width: 414px) and (min-width: 376px) {
+
+    /*hero slider*/
+    .hero-content h1{
+        font-size: 30px;
+        line-height: 35px;
+    }
+    .hero-content-wrap-1{
+        height: auto;
+        padding-top: 30px;
+    }
+    .hero-content-wrap{
+        height: auto;
+        padding-top: 100px;
+    }
+    .slider-bg-content .hero-image{
+        display: none;
+    }
+
+    .hero-action-btn a{
+        margin-bottom: 15px;
+    }
+
+    .hero-slider-section-two .section-shape{
+        position: relative;
+    }
+
+
+    /*features*/
+    .feature-box.feature-box-lefticon, .feature-box.feature-box-righticon {
+        padding: 1.15em 1em;
+    }
+
+    .feature-heading{
+        text-align: center;
+    }
+    .mt-100{
+        margin-top: 0;
+    }
+
+    /*video overly*/
+    .overlay{
+        padding: 100px 0;
+    }
+
+    /*download section*/
+    .download-btn{
+        width: 100%;
+        padding: 5px 50px;
+        display: block;
+    }
+    .download-app-button{
+        display: block;
+    }
+    .download-btn span{
+        display: none;
+    }
+    /*product details popup*/
+    .product-details-wrap img{
+        margin-bottom: 15px;
+    }
+    .single-product-feature-list li{
+        width: 50%;
+        font-size: 12px;
+        line-height: 14px;
+        font-weight: normal;
+        margin: 10px 0;
+    }
+}
+
+/* Extra Small Devices, Phones */
+@media screen and (max-width: 480px) and (min-width: 415px) {
+    /*hero slider*/
+    .hero-content h1{
+        font-size: 30px;
+        line-height: 35px;
+    }
+
+    .hero-content-wrap-1{
+        height: auto;
+        padding-top: 30px;
+    }
+    .hero-content-wrap{
+        height: auto;
+        padding-top: 100px;
+    }
+
+    .slider-bg-content .hero-image{
+        display: none;
+    }
+
+    .hero-action-btn a{
+        margin-bottom: 15px;
+    }
+
+    .hero-slider-section-two .section-shape{
+        position: relative;
+    }
+
+    /*features*/
+    .feature-box.feature-box-lefticon, .feature-box.feature-box-righticon {
+        padding: 1.15em 1em;
+    }
+
+    .feature-heading{
+        text-align: center;
+    }
+    .mt-100{
+        margin-top: 0;
+    }
+    /*video overly*/
+    .overlay{
+        padding: 100px 0;
+    }
+
+    /*product details popup*/
+    .product-details-wrap img{
+        margin-bottom: 15px;
+    }
+    .single-product-feature-list li{
+        width: 50%;
+        font-size: 12px;
+        line-height: 14px;
+        font-weight: normal;
+        margin: 10px 0;
+    }
+}
+
+/* Extra Small Devices, Phones */
+@media screen and (max-width: 568px) and (min-width: 481px) {
+    /*hero slider*/
+    .hero-content h1{
+        font-size: 30px;
+        line-height: 35px;
+    }
+
+    .hero-content-wrap-1{
+        height: auto;
+        padding-top: 30px;
+    }
+
+    .hero-content-wrap{
+        height: auto;
+        padding-top: 100px;
+    }
+    .slider-bg-content .hero-image{
+        display: none;
+    }
+
+    .hero-action-btn a{
+        margin-bottom: 15px;
+    }
+
+    .hero-slider-section-two .section-shape{
+        position: relative;
+    }
+
+    /*features*/
+    .feature-box.feature-box-lefticon, .feature-box.feature-box-righticon {
+        padding: 1.15em 1em;
+    }
+    .feature-heading{
+        text-align: center;
+    }
+    .mt-100{
+        margin-top: 0;
+    }
+
+    /*video overly*/
+    .overlay{
+        padding: 100px 0;
+    }
+
+}
+
+/* Extra Small Devices, Phones */
+@media screen and (max-width: 640px) and (min-width: 569px) {
+    /*hero slider*/
+    .hero-content h1{
+        font-size: 35px;
+        line-height: 40px;
+    }
+
+    .hero-content-wrap-1{
+        height: auto;
+        padding-top: 30px;
+    }
+
+    .hero-content-wrap{
+        height: auto;
+        padding-top: 100px;
+    }
+    .slider-bg-content .hero-image{
+        display: none;
+    }
+
+    .hero-action-btn a{
+        margin-bottom: 15px;
+    }
+
+    .hero-slider-section-two .section-shape{
+        position: relative;
+    }
+
+    /*features*/
+    .feature-box.feature-box-lefticon, .feature-box.feature-box-righticon {
+        padding: 1.15em 1em;
+    }
+
+    .feature-heading{
+        text-align: center;
+    }
+    .mt-100{
+        margin-top: 0;
+    }
+    /*video overly*/
+    .overlay{
+        padding: 100px 0;
+    }
+}
+
+/* Small Devices, Tablets */
+@media screen and (max-width: 720px) and (min-width: 641px) {
+    /*hero slider*/
+    .hero-content h1{
+        font-size: 35px;
+        line-height: 40px;
+    }
+
+    .hero-content-wrap-1{
+        height: auto;
+        padding-top: 30px;
+    }
+
+    .hero-content-wrap{
+        height: auto;
+        padding-top: 100px;
+    }
+
+    .slider-bg-content .hero-image{
+        display: none;
+    }
+
+    .hero-action-btn a{
+        margin-bottom: 15px;
+    }
+
+    .hero-slider-section-two .section-shape{
+        position: relative;
+    }
+
+    /*features*/
+    .feature-box.feature-box-lefticon, .feature-box.feature-box-righticon {
+        padding: 1.15em 1em;
+    }
+
+    .feature-heading{
+        text-align: center;
+    }
+    .mt-100{
+        margin-top: 0;
+    }
+    /*video overly*/
+    .overlay{
+        padding: 100px 0;
+    }
+
+}
+
+/* Small Devices, Tablets */
+@media screen and (max-width: 768px) and (min-width: 721px) {
+
+    /*hero slider*/
+    .hero-content h1{
+        font-size: 45px;
+        line-height: 55px;
+    }
+
+    .hero-content-wrap-1{
+        height: auto;
+        padding-top: 50px;
+    }
+
+    .hero-content-wrap{
+        height: auto;
+        padding-top: 120px;
+    }
+
+    .slider-bg-content .hero-image{
+        display: none;
+    }
+
+    .hero-action-btn a{
+        margin-bottom: 15px;
+    }
+
+    .hero-slider-section-two .section-shape{
+        position: relative;
+    }
+
+    .section-lg {
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+
+    /*features*/
+    .feature-box.feature-box-lefticon, .feature-box.feature-box-righticon {
+        padding: 1.15em 1em;
+    }
+
+    .feature-heading{
+        text-align: center;
+    }
+    .mt-100{
+        margin-top: 0;
+    }
+    /*video overly*/
+    .overlay{
+        padding: 100px 0;
+    }
+
+}
+
+
+/* Medium Devices, Desktops */
+@media screen and (max-width: 992px) and (min-width: 769px) {
+    /*hero slider*/
+    .hero-content h1{
+        font-size: 50px;
+        line-height: 60px;
+    }
+
+    /*features*/
+    .mt-100{
+        margin-top: 0;
+    }
+
+}
+
+/* Large Devices, Wide Screens */
+@media screen and (max-width: 1024px) and (min-width: 993px) {
+    /*features*/
+    .mt-100{
+        margin-top: 0;
+    }
+
+
+}
+
+/* Large Devices, Wide Screens */
+@media screen and (max-width: 1080px) and (min-width: 1025px) {
+    /*features*/
+    .mt-100{
+        margin-top: 0;
+    }
+
+}
+
+/* Large Devices, Wide Screens */
+@media screen and (max-width: 1152px) and (min-width: 1081px) {
+
+    /*features*/
+    .mt-100{
+        margin-top: 0;
+    }
+
+}
+
+
+/* Large Devices, Wide Screens */
+@media screen and (max-width: 1280px) and (min-width: 1153px) {
+
+
+
+}
+
+/* Large Devices, Wide Screens */
+@media screen and (max-width: 1366px) and (min-width: 1281px) {
+
+
+}
+
+/* Large Devices, Wide Screens */
+@media screen and (max-width: 1440px) and (min-width: 1367px) {
+
+}
+
+/* Large Devices, Wide Screens */
+@media screen and (max-width: 1600px) and (min-width: 1441px) {
+
+}
+
+/* Large Devices, Wide Screens */
+@media screen and (max-width: 1680px) and (min-width: 1601px) {
+
+}
+
+/* Large Devices, Wide Screens */
+@media screen and (max-width: 1920px) and (min-width: 1681px) {
+
+}
