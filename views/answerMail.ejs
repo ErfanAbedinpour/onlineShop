@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fa">
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,38 +15,35 @@
     <link href="/css/owl.carousel.min.css" rel="stylesheet">
     <link href="/css/bootstrap.min.css" rel="stylesheet">
     <link href="/css/style.css" rel="stylesheet">
+    <link href="/css/responsive.css" rel="stylesheet">
+
 </head>
+
 <body>
 
     <div id="main" class="main-content-wraper">
         <div class="main-content-inner">
             <header class="header">
-                <%-include('partials /_header') %>
+                <%-include('partials/_header') %>
             </header>
             <section id="hero" class="section-hero section-rotate">
-                <%-include('partials /_title') %>
+                <%-include('partials/_title') %>
             </section>
             <section id="discount" class="biz-product-section ptb-40">
-                <div class="container col-md-10 alert alert-primary">
-                <table class="table table-striped">
-                    <tr class="text-center">
-                        <td>نام و نام خانوادگی</td>
-                        <td>مدل دستگاه</td>
-                        <td>قیمت</td>
-                        <td>مدیریت</td>
-                    </tr>
-                    <tr class="text-center">
-                        <td>فاطمه کلهر</td>
-                        <td>کیس کامل کامپیوتر</td>
-                        <td>50,000,000</td>
-                        <td><a href="#payment" class="btn btn-sm btn-success">پرداخت</a>
-                            <a href="#payment" class="btn btn-sm btn-danger">حذف</a></td>
-                    </tr>
-                </table>
+                <div class="text-right container col-md-7 alert alert-primary" id="fa">
+                    <form class="form-signin" method="post" action="/mail/answer/<%=user._id.toString()%>">
+                        <h6 class="form-signin-heading" style="text-align: center;"> <%= user.userName%>ارسال جواب به مشتری</h6>
+                        <div style="color:#f00"></div>
+                        <div class="form-group pad bala ">
+                            <textarea name="text"cols="30" rows="10" placeholder="پیام خود را وارد کنید" style="width: 100%;" ></textarea>
+                        </div>
+                        <br>
+                        <button class="btn btn-lg btn-primary btn-block" name="submit" type="submit">ارسال</button>
+                    </form>
                 </div>
             </section>
             <footer class="footer-section bg-secondary ptb-40">
-                <%-include('partials/footer') %>
+                <%-include('partials/_footer') %>
             </footer>
         </div>
     </div>
@@ -56,5 +54,7 @@
     <script src="/js/jquery.easing.min.js"></script>
     <script src="/js/magnific-popup.min.js"></script>
     <script src="/js/scripts.js"></script>
+
 </body>
+
 </html>

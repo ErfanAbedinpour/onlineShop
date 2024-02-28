@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="fa">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تعداد محصولات</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        .product-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        .product-container .product-count {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background-color: red;
+            color: white;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            line-height: 20px;
+            font-size: 12px;
+        }
+
+        .product-image {
+            width: 200px;
+            /* تنظیم عرض عکس به دلخواه شما */
+            height: auto;
+            /* حفظ نسبت ابعاد */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="product-container">
+        <div class="product-count">3</div>
+        <img src="your-product-image.jpg" alt="عکس محصول" class="product-image">
+    </div>
+</body>
+
+</html>

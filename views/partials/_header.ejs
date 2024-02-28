@@ -4,12 +4,37 @@
     <link rel="stylesheet" href="css/themify-icons.css">
     <link rel="stylesheet" href="fonts/flaticon.css">
     <link rel="stylesheet" href="css/magnific-popup.css">
+<style>
+     .product-container {
+            position: relative;
+            display: inline-block;
+        }
+        .product-container .product-count {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background-color: red;
+            color: white;
+            width: 20px;
+            text-align: center;
+            height: 20px;
+            border-radius: 50%;
+            line-height: 20px;
+            font-size: 12px;
+        }
+
+</style>
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
     <div class="container">
         <ul class="nav navbar-nav mr-auto navbar-left">
             <li class="active"><a class="page-scroll" href="/">خانه</a></li>
-            <li><a href="register.html">ثبت نام</a></li>
-            <li><a href="login.html">ورود</a></li>
+            <% if(!locals.messages.isLogin) {%>
+                <li><a href="register.html">ثبت نام</a></li>
+                <li><a href="login.html">ورود</a></li>
+            <% }else{%>
+                <li><img src="/img/chagePass.png" style="height: 28px; width: 30px;" alt=""></li>
+                <li><a href=""><%= locals.messages.userName %></a></li>
+            <% } %>
         </ul>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbar"
             aria-controls="myNavbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -18,10 +43,13 @@
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav mr-auto navbar-right">
                 <li><a class="page-scroll" href="/blogs/">مقالات</a></li>
-                <li><a class="page-scroll" href="#discount">تخفیفات</a></li>
                 <li><a class="page-scroll" href="#products">محصولات پر بازدید</a></li>
                 <li><a class="page-scroll" href="/products/">همه محصولات</a></li>
-                <li><a class="page-scroll" href="#contact">تماس با ما</a></li>
+                <li><a class="page-scroll" style="padding-left: 40px;" href="#contact">تماس با ما</a></li>
+                <div class="product-container">
+                    <div class="product-count">10</div>
+                    <a href="/mail/"><img src="/img/mailbox.png" alt="عکس محصول" class="product-image" style="height: 30px; "></a>
+                </div>
             </ul>
         </div>
     </div>

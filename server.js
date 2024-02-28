@@ -17,10 +17,6 @@ app.use("/js", express.static(path.join(__dirname, "public", "js")));
 app.use("/fonts", express.static(path.join(__dirname, "public", "fonts")));
 app.set("views", path.join(__dirname, "views"));
 
-//RouterFile
-const authRouter = require("./router/auth");
-const adminRouter = require("./router/admin");
-const pages = require("./r");
 //Midlewares
 
 app.use(cookieParser());
@@ -33,12 +29,16 @@ app.use(
 );
 app.use(flash());
 
+//RouterFile
+const authRouter = require("./router/auth");
+const adminRouter = require("./router/admin");
+const pages = require("./router/pages");
+const mailRouter = require("./router/mail");
 //Router
-
-app.use("/");
+app.use("/", pages);
 app.use("/auth", authRouter);
 app.use("/admin", adminRouter);
-
+app.use("/mail", mailRouter);
 app.use((req, res) => {
   res.render("404");
 });

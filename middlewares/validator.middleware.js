@@ -7,10 +7,8 @@ const validator = (schema) => {
     } catch (error) {
       const err = error.message.split('"').join("").trim();
       //Retuen Current Error And Redirect To Current Page
-      return res.json({
-        status: false,
-        msg: err,
-      });
+      req.flash("error", err);
+      return res.redirect("/");
     }
   };
 };

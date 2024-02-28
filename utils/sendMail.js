@@ -20,3 +20,5 @@ const SendEmail = async (email, title, text) => {
     return false;
   }
 };
+
+module.exports = SendEmail;
