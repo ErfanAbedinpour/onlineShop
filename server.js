@@ -4,6 +4,8 @@ const cookieParser = require("cookie-parser");
 const path = require("path");
 const session = require("express-session");
 const flash = require("express-flash");
+const middleware = require("./middlewares/publucMiddlewares");
+const userInfo = require("./middlewares/userInfo");
 //Main
 const app = express()
   .use(express.urlencoded({ extended: false }))
@@ -28,18 +30,22 @@ app.use(
   })
 );
 app.use(flash());
+app.use(middleware.getUser);
+app.use(middleware.isAdmin);
 
 //RouterFile
 const authRouter = require("./router/auth");
-const adminRouter = require("./router/admin");
 const pages = require("./router/pages");
 const mailRouter = require("./router/mail");
+const userRouter = require("./router/user");
 //Router
+
 app.use("/", pages);
 app.use("/auth", authRouter);
-app.use("/admin", adminRouter);
 app.use("/mail", mailRouter);
-app.use((req, res) => {
+app.use("/user", userRouter);
+
+app.use(userInfo, (req, res) => {
   res.render("404");
 });
 

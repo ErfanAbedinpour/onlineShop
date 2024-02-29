@@ -8,7 +8,7 @@ const validator = (schema) => {
       const err = error.message.split('"').join("").trim();
       //Retuen Current Error And Redirect To Current Page
       req.flash("error", err);
-      return res.redirect("/");
+      return res.redirect(req.originalUrl);
     }
   };
 };

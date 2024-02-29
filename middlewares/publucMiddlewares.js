@@ -1,5 +1,7 @@
 const jsonwebtoken = require("jsonwebtoken");
 const userModel = require("../models/user");
+const mailModel = require("../models/mail");
+
 require("dotenv").config();
 
 //Get User With Token
@@ -18,14 +20,14 @@ const getUser = async (req, res, next) => {
 };
 
 //Get User Role
-const isAdmin = (req, res, next) => {
-  if (req.user.role === "ADMIN") {
+const isAdmin = async (req, res, next) => {
+  if (req.user?.role === "ADMIN") {
+    req.isAdmin = true;
+    req.mailCount = await mailModel.countDocuments();
     return next();
   }
-  return res.json({
-    status: false,
-    msg: "You Cant Accses to this api",
-  });
+  req.isAdmin = false;
+  next();
 };
 
 module.exports = {

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fa">
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -17,6 +18,7 @@
     <link href="/css/responsive.css" rel="stylesheet">
     <link rel="stylesheet" href="/css/authStyle.css">
 </head>
+
 <body>
     <div id="main" class="main-content-wraper">
         <div class="main-content-inner">
@@ -26,29 +28,27 @@
             <section id="hero" class="section-hero section-rotate">
                 <%-include('partials/_title') %>
             </section>
-                <div class="wrapper">
-                    <div class="form-container">
-                        <div class="form-inner">
-                            <form action="/auth/login" method="post" class="login">
-                                <%if(locals.messages.error) {%>
-                                    <h5 style="color: red; text-align: center;"><%=locals.messages.error%></h5>
-                                <% } %>
-                                <div class="field">
-                                    <input type="text" name="identified" placeholder="ایمیل یا شماره تماس" required>
-                                </div>
-                                <div class="field">
-                                    <input type="password" name="password" placeholder="رمز عبور" required>
-                                </div>
-                                <div class="pass-link"><a href="/auth/reset-password">فراموشی رمز عبور?</a></div>
-                                <div class="field btn">
-                                    <div class="btn-layer"></div>
-                                    <input type="submit" value="ورود">
-                                </div>
-                                <div class="signup-link" style="color: black;">اکانت ندارید? <a href="/auth/singup">ثبت نام</a></div>
-                            </form>
-                        </div>
+            <div class="wrapper">
+                <div class="form-container">
+                    <div class="form-inner">
+                        <form action="/auth/change-password/" method="post" class="login">
+                            <%if(locals.messages.error) {%>
+                                <h3 style="color: red; text-align: center;"><%=locals.messages.error%></h3>
+                            <% } %>
+                            <div class="field">
+                                <input type="password" name="password" placeholder=" رمز عبور جدید" required>
+                            </div>
+                            <div class="field">
+                                <input type="password" name="confirmPassword" placeholder="تکرار رمز عبور" required>
+                            </div>
+                            <div class="field btn">
+                                <div class="btn-layer"></div>
+                                <input type="submit" value="تغییر رمز">
+                            </div>
+                        </form>
                     </div>
-                </div>            
+                </div>
+            </div>
             <footer class="footer-section bg-secondary ptb-40">
                 <%-include('partials/_footer') %>
             </footer>
@@ -63,4 +63,5 @@
     <script src="/js/scripts.js"></script>
 
 </body>
+
 </html>

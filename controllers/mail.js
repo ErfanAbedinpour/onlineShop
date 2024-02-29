@@ -2,10 +2,6 @@ const mailModel = require("../models/mail");
 const sendEmail = require("../utils/sendMail");
 
 const SendMail = async (req, res) => {
-  //   if (!req.user.isLogin) {
-  //     req.flash("error", "برای ارسال انتقاد پیشنهاد باید لاگین کنید");
-  //     return res.redirect("/");
-  //   }
   const { userName, email, text, phone } = req.body;
   await mailModel.create({
     userName,

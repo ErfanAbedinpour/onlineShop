@@ -14,30 +14,45 @@ const {
   login: loginValidator,
   changePassword: changePasswordValidator,
 } = require("../validator/authResource");
+const userInfo = require("../middlewares/userInfo");
 //router
-
 const router = Router();
+router
+  .route("/login")
+  .get(userInfo, (req, res) => {
+    res.render("login");
+  })
+  .post(CheckMethod, validator(loginValidator), login);
 
-//middlewares
-router.use(CheckMethod);
+router
+  .route("/singup")
+  .get(userInfo, (req, res) => {
+    res.render("singup");
+  })
+  .post(CheckMethod, validator(singUp), singup);
 
-//singup Router
-router.post("/singup", validator(singUp), singup);
+router.get("/logout", (req, res) => {
+  res.clearCookie("token");
 
-//Login Router
-router.post("/login", validator(loginValidator), login);
+  res.redirect("/");
+});
 
 //ChangePasswordRouters
-router.get("/reset-password", (req, res) => {}); //Render just Email Page
-router.get("/change-password", validator(), resetPassword); // Render change Page after Check Email
+router.get("/reset-password", userInfo, (req, res) => {
+  res.render("resetPassword");
+}); //Render just Email Page
+
+router.post("/reset-password", resetPassword); // Render change Page after Check Email
 //Render Change password Page
-router.get("/change-password:token", (req, res) => {
+router.get("/change-password/:token", userInfo, (req, res) => {
   const { token } = req.params;
-  req.flash("token", token);
-  res.render("Pages"); // this is must Send Token And In Front Click on Action this token Send With Post to Backend
+  res.cookie("resetToken", token, {
+    httpOnly: true,
+  });
+  res.render("changePass"); // this is must Send Token And In Front Click on Action this token Send With Post to Backend
 }); // Render Change Password Page
 router.post(
-  "/change-password:token",
+  "/change-password",
   validator(changePasswordValidator),
   changePassword
 ); // Change Password

@@ -2,6 +2,7 @@
 const userModel = require("../models/user");
 const bcrypt = require("bcrypt");
 const jsonwebtoken = require("jsonwebtoken");
+const sendMail = require("../utils/sendMail");
 require("dotenv").config();
 
 //Singup Controller
@@ -12,41 +13,25 @@ const singup = async (req, res) => {
   const isExsistIdentified = await userModel.findOne({
     identified: data.identified,
   });
+
   if (isExsistIdentified) {
-    return res.json({
-      status: "false",
-      msg: `your ${data.method} is userd by another`,
-    });
+    req.flash(
+      "error",
+      "این شماره یا ایمیل قبلان  توسط یکی دیگر قبلان استفاده شده"
+    );
+    return res.redirect(req.originalUrl);
   }
   //Register User
   const HashPass = await bcrypt.hash(data.password, 11);
   const countOfDoc = await userModel.countDocuments();
-  const user = await userModel.create({
+  await userModel.create({
     userName: data.userName,
     password: HashPass,
     identified: data.identified,
     role: countOfDoc == 0 ? "ADMIN" : "USER",
   });
-  //Generate Token
-  const token = jsonwebtoken.sign({ id: user._id }, process.env["KEY"], {
-    expiresIn: "30 day",
-  });
-  //Set Token to seassion
-  res.cookie("token", token, {
-    httpOnly: true,
-  });
-  //Delete some Prop For Security
-  const userObj = user.toObject();
-  delete userObj["password"];
-  delete userObj["__v"];
   //Send Response
-  //here must Render Login Page
-  res.json({
-    status: true,
-    msg: "User Register succsesfully",
-    userObj,
-    accsesToken: token,
-  });
+  res.redirect("/auth/login");
 };
 
 //Login Controller
@@ -54,17 +39,7 @@ const login = async (req, res) => {
   //Check To if Token Exsist
   let token = req.cookies?.token;
   if (token) {
-    const { id } = jsonwebtoken.verify(token, process.env["KEY"]);
-    const user = await userModel.findById(id);
-    const userObj = user.toObject();
-    Reflect.deleteProperty(userObj, "password");
-    Reflect.deleteProperty(userObj, "__v");
-    //here must Load Home Page
-    return res.status(200).json({
-      status: true,
-      msg: "Login succsesfully",
-      user: userObj,
-    });
+    return res.redirect("/");
   }
   const { identified, password } = req.body;
   //Check To veryfy identified
@@ -73,26 +48,20 @@ const login = async (req, res) => {
   });
 
   if (!user || !(await bcrypt.compare(password, user.password))) {
-    return res.status(401).json({
-      status: false,
-      msg: "Not found Any user",
-    });
+    req.flash("error", "ایمیل یا رمز عبور اشتباه است");
+    return res.redirect(req.originalUrl);
+  }
+  if (user.isBan) {
+    req.flash("error", "شما توسط ادمین بن شده اید");
+    return res.redirect(req.originalUrl);
   }
   //Retuen User Object
   token = jsonwebtoken.sign({ id: user._id }, process.env["KEY"], {
     expiresIn: "30 day",
   });
   res.cookie("token", token);
-  const userObj = user.toObject();
-  delete userObj["password"];
-  delete userObj["__v"];
   //Sending Response
-  return res.json({
-    status: true,
-    msg: "login succsesfully",
-    user: userObj,
-    accsesToken: token,
-  });
+  return res.redirect("/");
 };
 
 const resetPassword = async (req, res) => {
@@ -102,39 +71,45 @@ const resetPassword = async (req, res) => {
     identified,
   });
   if (!user) {
-    return res.status(401).json({
-      status: false,
-      msg: "User Does Not Found",
-    });
+    req.flash("error", "ایمیل یا شماره تماس اشتباه است");
+    return res.redirect(req.originalUrl);
   }
   const token = jsonwebtoken.sign({ identified }, process.env["KEY"], {
     expiresIn: "20min",
   });
-  //Here Must Render Change Password Page with token
-  res.json({
-    status: true,
-    msg: "Ok",
-  });
+  if (
+    await sendMail(
+      identified,
+      "ریکاوری پسورد",
+      `http://localhost:3000/auth/change-password/${token}`
+    )
+  ) {
+    req.flash("succses", "ایمیل با موفقیت ارسال شد");
+    res.redirect(req.originalUrl);
+  }
 };
 
 const changePassword = async (req, res) => {
-  const { token } = req.params;
-  const { identified } = jsonwebtoken.verify(token, process.env["KEY"]);
-  const { password } = req.body;
-  const HashPass = await bcrypt.hash(password, 11);
-  await userModel.findByIdAndUpdate(
-    {
-      identified,
-    },
-    {
-      $set: { password: HashPass },
-    }
-  );
-  //Here  Must Render Page
-  res.json({
-    status: true,
-    msg: "Password Changed Succsesfully",
-  });
+  const { resetToken } = req.cookies;
+  try {
+    const { identified } = jsonwebtoken.verify(resetToken, process.env["KEY"]);
+    const { password } = req.body;
+    const HashPass = await bcrypt.hash(password, 11);
+    await userModel.findOneAndUpdate(
+      {
+        identified,
+      },
+      {
+        $set: { password: HashPass },
+      }
+    );
+    //Here  Must Render Page
+    res.clearCookie("resetToken");
+    res.redirect("/auth/login");
+  } catch (err) {
+    console.log(err);
+    res.redirect("/404");
+  }
 };
 
 module.exports = {

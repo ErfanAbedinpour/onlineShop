@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>فروشگاه کامپیوتر </title>
+    <title>جواب مشتری</title>
     <link rel="icon" href="img/favicon.png" type="image/png" sizes="16x16">
     <link rel="stylesheet" href="/css/font-awesome.min.css">
     <link rel="stylesheet" href="/css/themify-icons.css">
@@ -16,11 +16,8 @@
     <link href="/css/bootstrap.min.css" rel="stylesheet">
     <link href="/css/style.css" rel="stylesheet">
     <link href="/css/responsive.css" rel="stylesheet">
-
 </head>
-
 <body>
-
     <div id="main" class="main-content-wraper">
         <div class="main-content-inner">
             <header class="header">
@@ -34,8 +31,11 @@
                     <form class="form-signin" method="post" action="/mail/answer/<%=user._id.toString()%>">
                         <h6 class="form-signin-heading" style="text-align: center;"> <%= user.userName%>ارسال جواب به مشتری</h6>
                         <div style="color:#f00"></div>
-                        <div class="form-group pad bala ">
-                            <textarea name="text"cols="30" rows="10" placeholder="پیام خود را وارد کنید" style="width: 100%;" ></textarea>
+                        <div class="form-group pad bala">                            
+                            <label for="">پیام کاربر</label>
+                            <input type="text" class="form-control" name="username" value="<%=user.text%>" disabled>
+                            <br>
+                            <textarea name="text" cols="30" rows="10" placeholder="پیام خود را وارد کنید" style="width: 100%;" ></textarea>
                         </div>
                         <br>
                         <button class="btn btn-lg btn-primary btn-block" name="submit" type="submit">ارسال</button>
@@ -54,7 +54,5 @@
     <script src="/js/jquery.easing.min.js"></script>
     <script src="/js/magnific-popup.min.js"></script>
     <script src="/js/scripts.js"></script>
-
 </body>
-
 </html>

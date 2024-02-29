@@ -34,7 +34,13 @@ const singUp = joi.object({
     .min(8)
     .required()
     .error(new Error("پسورد یاید حداقل ۸ کاراکتر باشد")),
-  confirmPassword: joi.ref("password"),
+  confirmPassword: joi
+    .string()
+    .valid(joi.ref("password"))
+    .error(new Error("پسورد ها با هم مطابقت ندارند"))
+    .required(),
+
+  role: joi.string().valid("ADMIN", "USER"),
 });
 
 //Login Input Validator
@@ -72,7 +78,11 @@ const changePassword = joi.object({
     .min(8)
     .required()
     .error(new Error("باید حداقل ۸ کاراکتر باشد")),
-  confirmPassword: joi.ref("password"),
+  confirmPassword: joi
+    .string()
+    .valid(joi.ref("password"))
+    .error(new Error("پسورد ها با هم مطابقت ندارند"))
+    .required(),
 });
 
 const mailValidator = joi.object({
@@ -97,6 +107,7 @@ const mailValidator = joi.object({
     .required()
     .error(new Error("لطفا یک ایمیل وارد کنید")),
 });
+
 module.exports = {
   singUp,
   login,
