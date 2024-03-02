@@ -108,9 +108,32 @@ const mailValidator = joi.object({
     .error(new Error("لطفا یک ایمیل وارد کنید")),
 });
 
+const ProductAdd = joi.object({
+  title: joi
+    .string()
+    .required()
+    .error(new Error("لطفا  یک نام معتبر برای محصول وارد کنید")),
+  describe: joi
+    .string()
+    .regex(/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/)
+    .error(new Error("لطفا یک توضیح برای محصول بنویسید"))
+    .required(),
+  price: joi
+    .string()
+    .max(30)
+    .required()
+    .error(new Error("محصول بدون قیمت نمیشه ک میشه؟")),
+  model: joi
+    .string()
+    .email()
+    .required()
+    .error(new Error("به هر حال یک مدلی هم داره دیگ؟")),
+});
+
 module.exports = {
   singUp,
   login,
   changePassword,
   mailValidator,
+  ProductAdd,
 };

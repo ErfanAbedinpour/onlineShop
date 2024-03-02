@@ -12,6 +12,8 @@ router.route("/").get(userInfo, controller.showUsers);
 
 router.get("/ban/:id", controller.ban);
 
+router.get("/unban/:id", controller.unBan);
+
 router.get("/delete/:id", controller.remove);
 
 router.get("/add-user", userInfo, (req, res) => {

@@ -77,6 +77,9 @@ const resetPassword = async (req, res) => {
   const token = jsonwebtoken.sign({ identified }, process.env["KEY"], {
     expiresIn: "20min",
   });
+  res.cookie("resetToken", token, {
+    httpOnly: true,
+  });
   if (
     await sendMail(
       identified,
@@ -90,6 +93,7 @@ const resetPassword = async (req, res) => {
 };
 
 const changePassword = async (req, res) => {
+  //Chenges Password
   const { resetToken } = req.cookies;
   try {
     const { identified } = jsonwebtoken.verify(resetToken, process.env["KEY"]);

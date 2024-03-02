@@ -38,13 +38,18 @@ const authRouter = require("./router/auth");
 const pages = require("./router/pages");
 const mailRouter = require("./router/mail");
 const userRouter = require("./router/user");
-//Router
+const productRouter = require("./router/product");
+const CartRouter = require("./router/cart");
 
+//Router
 app.use("/", pages);
 app.use("/auth", authRouter);
 app.use("/mail", mailRouter);
 app.use("/user", userRouter);
+app.use("/product", productRouter);
+app.use("/cart", CartRouter);
 
+//404 Page
 app.use(userInfo, (req, res) => {
   res.render("404");
 });

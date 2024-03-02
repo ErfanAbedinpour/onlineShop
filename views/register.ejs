@@ -1,70 +1,85 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fa">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>فروشگاه کامپیوتر </title>
-    <link rel="icon" href="img/favicon.png" type="image/png" sizes="16x16">
-    <link rel="stylesheet" href="/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/css/themify-icons.css">
-    <link rel="stylesheet" href="/fonts/flaticon.css">
-    <link rel="stylesheet" href="/css/magnific-popup.css">
-    <link href="/css/owl.theme.default.min.css" rel="stylesheet">
-    <link href="/css/owl.carousel.min.css" rel="stylesheet">
-    <link href="/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/css/style.css" rel="stylesheet">
-    <link href="/css/responsive.css" rel="stylesheet">
-
-</head>
-<body>
-
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>فروشگاه کامپیوتر</title>
+    <link rel="icon" href="img/favicon.png" type="image/png" sizes="16x16" />
+    <link rel="stylesheet" href="/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="/css/themify-icons.css" />
+    <link rel="stylesheet" href="/fonts/flaticon.css" />
+    <link rel="stylesheet" href="/css/magnific-popup.css" />
+    <link href="/css/owl.theme.default.min.css" rel="stylesheet" />
+    <link href="/css/owl.carousel.min.css" rel="stylesheet" />
+    <link href="/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/css/style.css" rel="stylesheet" />
+    <link href="/css/responsive.css" rel="stylesheet" />
+  </head>
+  <body>
     <div id="main" class="main-content-wraper">
-        <div class="main-content-inner">
-            <header class="header">
-                <%-include('partials /_header') %>
-            </header>
-            <section id="hero" class="section-hero section-rotate">
-                <%-include('partials /_title') %>
-            </section>
-            <section id="discount" class="biz-product-section ptb-40">
-                <div class="text-right container col-md-7 alert alert-primary" id="fa">
-                    <h4 class="text-right">ثبت نام</h4>
-                        <form method="POST" action="">
-                            <div class="form-group pad bala ">
-                                <label for="">نام و نام خانوادگی</label>
-                                <input type="text" class="form-control" name="name" required>
-                            </div>
-                            <div class="form-group pad bala ">
-                                <label for="">نام کاربری</label>
-                                <input type="text" class="form-control" name="username" required>
-                            </div>
-                            <div class="form-group pad ">
-                                <label for="">رمز عبور</label>
-                                <input type="password" class="form-control" name="password" required>
-                            </div>
-                            <div class="form-group pad ">
-                                <label for="">ایمیل</label>
-                                <input type="email" class="form-control" name="email" required>
-                            </div>
-                            <div class="form-group pad ">
-                                <label for="">تلفن</label>
-                                <input type="text" class="form-control" name="tel">
-                            </div>
-                            <div class="form-group pad ">
-                                <label for="">آدرس</label>
-                                <input type="address" class="form-control" name="address">
-                            </div>
-                            <div class="form-group pad paiin">
-                                <button type="submit" class="btn btn-outline-primary" name="submit">ثبت نام</button>
-                            </div>
-                        </form>
-                </div>
-            </section>
-            <footer class="footer-section bg-secondary ptb-40">
-                <%-include('partials/_footer') %>
-            </footer>
-        </div>
+      <div class="main-content-inner">
+        <header class="header"><%-include('partials /_header') %></header>
+        <section id="hero" class="section-hero section-rotate">
+          <%-include('partials /_title') %>
+        </section>
+        <section id="discount" class="biz-product-section ptb-40">
+          <div
+            class="text-right container col-md-7 alert alert-primary"
+            id="fa">
+            <h4 class="text-right">ثبت نام</h4>
+            <form method="POST" action="">
+              <div class="form-group pad bala">
+                <label for="">نام و نام خانوادگی</label>
+                <input type="text" class="form-control" name="name" required />
+              </div>
+              <div class="form-group pad bala">
+                <label for="">نام کاربری</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="username"
+                  required />
+              </div>
+              <div class="form-group pad">
+                <label for="">رمز عبور</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  name="password"
+                  required />
+              </div>
+              <div class="form-group pad">
+                <label for="">ایمیل</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  name="email"
+                  required />
+              </div>
+              <div class="form-group pad">
+                <label for="">تلفن</label>
+                <input type="text" class="form-control" name="tel" />
+              </div>
+              <div class="form-group pad">
+                <label for="">آدرس</label>
+                <input type="address" class="form-control" name="address" />
+              </div>
+              <div class="form-group pad paiin">
+                <button
+                  type="submit"
+                  class="btn btn-outline-primary"
+                  name="submit">
+                  ثبت نام
+                </button>
+              </div>
+            </form>
+          </div>
+        </section>
+        <footer class="footer-section bg-secondary ptb-40">
+          <%-include('partials/_footer') %>
+        </footer>
+      </div>
     </div>
     <script src="/js/jquery-3.3.1.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
@@ -73,6 +88,5 @@
     <script src="/js/jquery.easing.min.js"></script>
     <script src="/js/magnific-popup.min.js"></script>
     <script src="/js/scripts.js"></script>
-
-</body>
+  </body>
 </html>

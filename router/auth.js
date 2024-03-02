@@ -45,12 +45,13 @@ router.get("/reset-password", userInfo, (req, res) => {
 router.post("/reset-password", resetPassword); // Render change Page after Check Email
 //Render Change password Page
 router.get("/change-password/:token", userInfo, (req, res) => {
-  const { token } = req.params;
-  res.cookie("resetToken", token, {
-    httpOnly: true,
-  });
+  const resetToken = req.cookies?.resetToken;
+  if (!resetToken) {
+    return res.redirect("/404/");
+  }
   res.render("changePass"); // this is must Send Token And In Front Click on Action this token Send With Post to Backend
 }); // Render Change Password Page
+
 router.post(
   "/change-password",
   validator(changePasswordValidator),

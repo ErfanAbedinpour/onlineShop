@@ -1,5 +1,7 @@
 const nodemailer = require("nodemailer");
 require("dotenv").config();
+
+//Send Email To Target with email and Sunject And text oF Email
 const SendEmail = async (email, title, text) => {
   try {
     if (!email.match(/[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/)) {

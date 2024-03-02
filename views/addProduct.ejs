@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ثبت نام</title>
+    <link rel="icon" href="img/favicon.png" type="image/png" sizes="16x16">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/themify-icons.css">
+    <link rel="stylesheet" href="/fonts/flaticon.css">
+    <link rel="stylesheet" href="/css/magnific-popup.css">
+    <link href="/css/owl.theme.default.min.css" rel="stylesheet">
+    <link href="/css/owl.carousel.min.css" rel="stylesheet">
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
+    <link href="/css/responsive.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/authStyle.css">
+</head>
+
+<body>
+    <div id="main" class="main-content-wraper">
+        <div class="main-content-inner">
+            <header class="header">
+                <%-include('partials/_header') %>
+            </header>
+            <section id="hero" class="section-hero section-rotate">
+                <%-include('partials/_title') %>
+            </section>
+            <div class="wrapper" style="background-color: #f1f1f1;">
+                <div class="form-container">
+                    <div class="form-inner">
+                        <% if(isEdit) {%>
+                             <form action="/product/edit/<%=product._id%>" class="login" method="post" enctype="multipart/form-data">
+                            <% if(locals.messages.error) {%>
+                                <h5 style="color: red; text-align: center;">
+                                    <%=locals.messages.error%>
+                                </h5>
+                            <% }else if(locals.messages.succsess) {%>
+                                <h5 style="color: green; text-align: center;">
+                                    <%=locals.messages.succsess%>
+                                </h5>
+                            <% } %>
+                            <div class="field">
+                                <input type="text" placeholder="نام کالا" name="title" value="<%=product.title%>" required>
+                            </div>
+                            <div class="field">
+                                <input type="text" placeholder="مدل" name="model" required value="<%=product.model%>">
+                            </div>
+                            <div class="field">
+                                <textarea style="width: 390px; height: 200px; border-radius: 5px;" name="describe" id="" cols="30" rows="10" placeholder="توضیحات کالا" ><%=product.describe %></textarea>
+                            </div>
+                            <div class="field" style="margin-top: 170px;">
+                                <input type="number" value="<%=product.invent%>" placeholder="تعداد" name="invent" style="text-align: center;" required>
+                            </div>
+                            <div class="field">
+                                <input type="number" placeholder="قیمت" value="<%=product.price%>" name="price" style="text-align: center;" required>
+                            </div>
+                            <div class="field" id="Pcate">
+                              <label for="Pcate" style="color: black;">دسته بندی محصول</label>
+                                <select name="categorie" id="Pcate" style="width: 120px; text-align: center;">
+                                  <option value="computer">کامپیوتر</option>
+                                  <option value="accounting">حساب داری</option>
+                                  <option value="graphic">گرافیک</option>
+                                </select>
+                            </div>
+                            
+                            <label for="oldImg" style="color: black;">عکس قدیمی محصول</label>
+                            <div class="field">
+                                <img id="oldImg" style="height: 110px; width: 120px;" src="data:<%=product.image.contentType%>;base64,<%=product.image.data.toString('base64') %>" alt="">
+                            </div>
+
+                            <input type="file" name="product_image" id="product_image" style="color: black; padding-top: 70px;">
+                              <label for="product_image" style="text-align: center; color:black;">لطفا عکس جدید محصول را اپلود کنید</label>
+                            
+                            <div class="field btn">
+                                <div class="btn-layer"></div>
+                                <input type="submit" value="ویرایش محصول">
+                            </div>
+                        </form>
+                        <% }else {%>
+                            
+                            <form action="/product/add-product" class="login" method="post" enctype="multipart/form-data">
+                                <% if(locals.messages.error) {%>
+                                    <h5 style="color: red; text-align: center;">
+                                        <%=locals.messages.error%>
+                                    </h5>
+                                <% }else if(locals.messages.succsess) {%>
+                                    <h5 style="color: green; text-align: center;">
+                                        <%=locals.messages.succsess%>
+                                    </h5>
+                                <% } %>
+                                <div class="field">
+                                    <input type="text" placeholder="نام کالا" name="title" required>
+                                </div>
+                                <div class="field">
+                                    <input type="text" placeholder="مدل" name="model" required>
+                                </div>
+                                <div class="field">
+                                    <textarea style="width: 390px; height: 200px; border-radius: 5px;" name="describe" id="" cols="30" rows="10" placeholder="توضیحات کالا"></textarea>
+                                </div>
+                                <div class="field" style="margin-top: 170px;">
+                                    <input type="number" placeholder="تعداد" name="invent" style="text-align: center;" required>
+                                </div>
+                                <div class="field">
+                                    <input type="number" placeholder="قیمت" name="price" style="text-align: center;" required>
+                                </div>
+                                <div class="field" id="Pcate">
+                                  <label for="Pcate" style="color: black;">دسته بندی محصول</label>
+                                    <select name="categorie" id="Pcate" style="width: 120px; text-align: center;">
+                                      <option value="computer">کامپیوتر</option>
+                                      <option value="accounting">حساب داری</option>
+                                      <option value="graphic">گرافیک</option>
+                                    </select>
+                                </div>
+                                
+                                  <input type="file" name="product_image" id="product_image" required style="color: black;">
+                                  <label for="product_image" style="text-align: center; color:black;">لطفا عکس محصول را اپلود کنید</label>
+                                <div class="field btn">
+                                    <div class="btn-layer"></div>
+                                    <input type="submit" value="ثبت کالا">
+                                </div>
+                            </form>
+                        <% } %>
+                    </div>
+                </div>
+            </div>
+            <footer class="footer-section bg-secondary ptb-40">
+                <%-include('partials/_footer')%>
+            </footer>
+        </div>
+    </div>
+    <script src="/js/jquery-3.3.1.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/jquery.easeScroll.min.js"></script>
+    <script src="/js/owl.carousel.min.js"></script>
+    <script src="/js/jquery.easing.min.js"></script>
+    <script src="/js/magnific-popup.min.js"></script>
+    <script src="/js/scripts.js"></script>
+</body>
+
+</html>

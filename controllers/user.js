@@ -1,12 +1,8 @@
 const userModel = require("../models/user");
+const banModel = require("../models/ban");
 const bcrypt = require("bcrypt");
 const showUsers = async (req, res) => {
   const users = await userModel.find({});
-  if (req.isLogin) {
-    req.flash("isAdmin", req.isAdmin);
-    req.flash("isLogin", true);
-    req.flash("userName", req.user.userName);
-  }
   res.render("usersList", {
     users,
   });
@@ -18,8 +14,26 @@ const ban = async (req, res) => {
     req.flash("error", "شما نمیتوانید خودتان را بن کنید");
     return res.redirect("/user/");
   }
-  await userModel.findByIdAndUpdate(id, {
+  const user = await userModel.findByIdAndUpdate(id, {
     $set: { isBan: true },
+  });
+  await banModel.create({
+    user: user._id,
+  });
+  res.redirect("/user/");
+};
+
+const unBan = async (req, res) => {
+  const { id } = req.params;
+  if (req.user._id.toString() == id) {
+    req.flash("error", "شما نمیتوانید خودتان را بن کنید");
+    return res.redirect("/user/");
+  }
+  const user = await userModel.findByIdAndUpdate(id, {
+    $set: { isBan: false },
+  });
+  await banModel.deleteOne({
+    user: user._id,
   });
   res.redirect("/user/");
 };
@@ -66,4 +80,5 @@ module.exports = {
   ban,
   remove,
   addUser,
+  unBan,
 };

@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="fa">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>فروشگاه کامپیوتر</title>
+    <link rel="icon" href="img/favicon.png" type="image/png" sizes="16x16" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <link rel="stylesheet" href="css/themify-icons.css" />
+    <link rel="stylesheet" href="fonts/flaticon.css" />
+    <link rel="stylesheet" href="css/magnific-popup.css" />
+    <link href="css/owl.theme.default.min.css" rel="stylesheet" />
+    <link href="css/owl.carousel.min.css" rel="stylesheet" />
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
+    <link href="css/responsive.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div id="main" class="main-content-wraper">
+      <div class="main-content-inner">
+        <header class="header"><%-include('partials/_header') %></header>
+        <section id="hero" class="section-hero section-rotate">
+          <%-include('partials/_title') %>
+        </section>
+        <section id="discount" class="biz-product-section ptb-40">
+          <% if(locals.messages.error) {%>
+              <h2 style="color: red; text-align: center;"><%=locals.messages.error%></h2>
+            <% } %>
+          <div class="container col-md-10 alert alert-primary">
+            <div class="container col-4">
+              <img
+                src="data:<%=product.image.contentType%>;base64,<%=product.image.data.toString('base64') %>" />
+            </div>
+            <div>
+              <h6 class="text-right">نام محصول :<%=product.title %></h6>
+              <p class="text-right">قیمت :<%=product.price %></p>
+              <p class="text-right">مدل : <%=product.model %></p>
+              <p class="text-right">تعداد موجود : <%=product.invent %></p>
+              <p class="text-right">توضیحات: <%=product.describe%></p>
+              <p class="text-right">تعداد بازدید: <%=product.view%></p>
+              <form action="/cart/add/" method="post">
+                <input
+                  type="hidden"
+                  name="id"
+                  value="<%=product._id.toString()%>" />
+                  <% if(isOnCart){%>
+                    <button type="button" class="btn btn-primary btn-lg btn-block" style="background-color: #f1f1f1; color: black;">
+                      کالا در سبد خرید شما وجود دارد
+                    </button>
+                  <% }else {%>
+                    <button type="submit" class="btn btn-primary btn-lg btn-block">
+                      خرید
+                    </button>
+                  <% } %>
+                
+              </form>
+              
+            </div>
+          </div>
+        </section>
+        <footer class="footer-section bg-secondary ptb-40">
+          <%-include('partials/_footer') %>
+        </footer>
+      </div>
+    </div>
+    <script src="/js/jquery-3.3.1.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/jquery.easeScroll.min.js"></script>
+    <script src="/js/owl.carousel.min.js"></script>
+    <script src="/js/jquery.easing.min.js"></script>
+    <script src="/js/magnific-popup.min.js"></script>
+    <script src="/js/scripts.js"></script>
+  </body>
+</html>
