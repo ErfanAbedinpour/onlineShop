@@ -24,9 +24,9 @@ app.set("views", path.join(__dirname, "views"));
 app.use(cookieParser());
 app.use(
   session({
-    secret: "keyboard cat",
+    secret: "EMAM",
     resave: false,
-    saveUninitialized: false,
+    saveUninitialized: true,
   })
 );
 app.use(flash());
@@ -40,7 +40,7 @@ const mailRouter = require("./router/mail");
 const userRouter = require("./router/user");
 const productRouter = require("./router/product");
 const CartRouter = require("./router/cart");
-
+const BlogRouter = require("./router/blog");
 //Router
 app.use("/", pages);
 app.use("/auth", authRouter);
@@ -48,7 +48,7 @@ app.use("/mail", mailRouter);
 app.use("/user", userRouter);
 app.use("/product", productRouter);
 app.use("/cart", CartRouter);
-
+app.use("/blog", BlogRouter);
 //404 Page
 app.use(userInfo, (req, res) => {
   res.render("404");

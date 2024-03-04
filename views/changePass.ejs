@@ -33,7 +33,7 @@
                     <div class="form-inner">
                         <form action="/auth/change-password/" method="post" class="login">
                             <%if(locals.messages.error) {%>
-                                <h3 style="color: red; text-align: center;"><%=locals.messages.error%></h3>
+                                <h5 style="color: red; text-align: center;"><%=locals.messages.error%></h5>
                             <% } %>
                             <div class="field">
                                 <input type="password" name="password" placeholder=" رمز عبور جدید" required>

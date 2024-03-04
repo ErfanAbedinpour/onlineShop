@@ -2,9 +2,8 @@
 <html lang="fa">
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>فروشگاه کامپیوتر </title>
+    <title>بلاگ ها</title>
     <link rel="icon" href="img/favicon.png" type="image/png" sizes="16x16">
     <link rel="stylesheet" href="/css/font-awesome.min.css">
     <link rel="stylesheet" href="/css/themify-icons.css">
@@ -29,18 +28,24 @@
             </section>
 
             <section id="discount" class="biz-product-section ptb-40">
-                <div class="container col-md-10 alert alert-primary">
+                <% if(blogs.length==0) {%>
+                    <h3 style="text-align: center;">وبلاگی وجود ندارد</h3>
+                    <% }else {%>
+                        <div class="container col-md-10 alert alert-primary">
                     <!-- Blogs -->
-                    <div class="row">
-                        <div class="col-md-2"><img src="img/a2.jpg" class="img-thumbnail"> </div>
-                        <div class="col-md-9 text-right">
-                            <h5>راهکارهای ایجاد یک وب سایت خوب</h5>
-                            <p>یکی از جالب ترین خصوصیات یک وب سایت این است که هفت روز هفته و تمام ۲۴ ساعت شبانه روز مطالب شما را در اختیار مردم جهان قرار می دهد . این خصوصیت فوق العاده ، مسئولیت شما را به عنوان صاحب سایت بسیار حساس میکند .</p>
-                            <br>
-                            <a href="show.html" class="pull-left btn btn-outline-primary">ادامه...</a>
-                        </div>
-                        <hr class="hr">
-                    </div>
+                            <% blogs.forEach(item=>{ %>
+                                <div class="row">
+                                    <div class="col-md-2"><img src="data:<%=item.image.contentType%>;base64,<%=item.image.data.toString('base64') %>" class="img-thumbnail"> </div>
+                                    <div class="col-md-9 text-right">
+                                        <h5><%=item.title %></h5>
+                                        <p><%=item.describe %></p>
+                                        <br>
+                                        <a href="/blog/details/<%=item._id.toString() %>" class="pull-left btn btn-outline-primary">ادامه...</a>
+                                    </div>
+                                    <hr class="hr">
+                                </div>
+                            <% }) %>
+                    <%} %>
                 </div>
             </section>
             <footer class="footer-section bg-secondary ptb-40">

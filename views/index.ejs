@@ -39,19 +39,21 @@
                             <div class="col-md-12">
                                 <div class="owl-carousel owl-theme biz-products carousel-indicator">
                                     <!-- Newer Products -->
-                                    <div class="biz-single-product item">
-                                        <div class="biz-product-img border">
-                                            <img src='/img/Product.jpeg' alt='Smart Product' class='img-responsive'></div>
-                                        <div class="biz-product-content">
-                                            <p>کیس کامل</p>
-                                            <div class="price">
-                                            <h5><span class="original-price">5,000,000 میلیون تومان</span><del>6,500,000</del></h5>
-                                            </div>
-                                            <div class="product-action-btn text-center mt-20">
-                                            <a href="page1.html">مشاهده جزئیات</a>
+                                    <% NewProduct.forEach(item=>{%>
+                                        <div class="biz-single-product item">
+                                            <div class="biz-product-img border">
+                                                <img src='data:<%=item.image.contentType%>;base64,<%=item.image.data.toString('base64') %>' alt='Smart Product' class='img-responsive'></div>
+                                            <div class="biz-product-content">
+                                                <p> نام: <%=item.title %></p>
+                                                <div class="price">
+                                                <h5><span class="original-price">قیمت: <%=item.price %> تومان</span></h5>
+                                                </div>                                                
+                                                <div class="product-action-btn text-center mt-20">
+                                                <a href="/product/details/<%=item._id.toString()%>">مشاهده جزئیات</a>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    <% }) %>
                                 </div>
                             </div>
                         </div>
@@ -72,19 +74,22 @@
                         <div class="row" id="createtag">
                             <div class="col-md-12">
                                 <div class="owl-carousel owl-theme biz-products carousel-indicator">
-                                    <div class="biz-single-product item">
-                                        <div class="biz-product-img"><img src='/img/Product.jpeg' alt='Smart Product' class='img-responsive'>
-                                        </div>
-                                        <div class="biz-product-content">
-                                            <p>کیس کامل</p>
-                                            <div class="price">
-                                                <h5><span class="original-price">5,000,000 میلیون تومان</span></h5>
+                                    <% ViewProducts.forEach(item=>{%>
+                                        <div class="biz-single-product item">
+                                            <div class="biz-product-img border">
+                                                <img src='data:<%=item.image.contentType%>;base64,<%=item.image.data.toString('base64') %>' alt='Smart Product' class='img-responsive'></div>
+                                            <div class="biz-product-content">
+                                                <p> نام: <%=item.title %></p>
+                                                <div class="price">
+                                                <h5><span class="original-price">قیمت: <%=item.price %> تومان</span></h5>
+                                                </div>
+                                                <p>بازید: <%=item.view%></p>
+                                                <div class="product-action-btn text-center mt-20">
+                                                <a href="/product/details/<%=item._id.toString()%>">مشاهده جزئیات</a>
+                                                </div>
                                             </div>
-                                            <div class="product-action-btn text-center mt-20">
-                                                <a href="page1.html">مشاهده جزئیات</a>
-                                            </div>
                                         </div>
-                                    </div>
+                                    <% }) %>
                                 </div>
                             </div>
                         </div>

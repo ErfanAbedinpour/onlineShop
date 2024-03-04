@@ -59,7 +59,10 @@ const login = async (req, res) => {
   token = jsonwebtoken.sign({ id: user._id }, process.env["KEY"], {
     expiresIn: "30 day",
   });
-  res.cookie("token", token);
+  res.cookie("token", token, {
+    httpOnly: true,
+    maxAge: 30000000000,
+  });
   //Sending Response
   return res.redirect("/");
 };
@@ -97,7 +100,11 @@ const changePassword = async (req, res) => {
   const { resetToken } = req.cookies;
   try {
     const { identified } = jsonwebtoken.verify(resetToken, process.env["KEY"]);
-    const { password } = req.body;
+    const { password, confirmPassword } = req.body;
+    if (password != confirmPassword) {
+      req.flash("error", "پسورد ها همخوانی ندارند");
+      return res.redirect(`/auth/change-password/${resetToken}`);
+    }
     const HashPass = await bcrypt.hash(password, 11);
     await userModel.findOneAndUpdate(
       {
@@ -111,7 +118,7 @@ const changePassword = async (req, res) => {
     res.clearCookie("resetToken");
     res.redirect("/auth/login");
   } catch (err) {
-    console.log(err);
+    console.log("Error is ", err.message);
     res.redirect("/404");
   }
 };

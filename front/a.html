@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="fa">
+  <head>
+    <style>
+      .contact-supporter-btn {
+        position: fixed;
+        bottom: 1rem;
+        right: 1rem;
+        z-index: 100;
+      }
+    </style>
+    <!-- ... head elements ... -->
+  </head>
+  <body>
+    <div id="main" class="main-content-wraper">
+      <div class="main-content-inner">
+        <header class="header">
+          <!-- ... other header elements ... -->
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#myNavbar"
+            aria-controls="myNavbar"
+            aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <button class="contact-supporter-btn btn btn-primary">
+            Contact Supporter
+          </button>
+          <!-- ... other header elements ... -->
+        </header>
+        <!-- ... other elements ... -->
+      </div>
+    </div>
+    <script>
+      document
+        .querySelector(".contact-supporter-btn")
+        .addEventListener("click", function () {
+          window.open(
+            "https://your-support-messaging-platform.com/contact",
+            "_blank"
+          );
+        });
+    </script>
+    <!-- ... other scripts ... -->
+  </body>
+  <script>
+    document
+      .querySelector(".contact-supporter-btn")
+      .addEventListener("click", function () {
+        // Open a messaging app or a contact form in a new window/tab
+        window.open(
+          "https://your-support-messaging-platform.com/contact",
+          "_blank"
+        );
+      });
+  </script>
+</html>

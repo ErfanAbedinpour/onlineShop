@@ -1,5 +1,7 @@
 const productModel = require("../models/product");
 const cartModel = require("../models/cart");
+
+//show product With Category
 const ShowProducts = async (req, res) => {
   const computer = await productModel.find({
     categorie: "computer",
@@ -17,9 +19,13 @@ const ShowProducts = async (req, res) => {
   });
 };
 
+//Render Add Products Render Page
 const ShowAddProductPage = async (req, res) => {
-  res.render("addProduct");
+  res.render("addProduct", {
+    isEdit: false,
+  });
 };
+
 //Do Backend For add Product in DataBase
 const addProduct = async (req, res) => {
   try {
@@ -54,6 +60,7 @@ const addProduct = async (req, res) => {
   }
 };
 
+//Show Product Details
 const productDetails = async (req, res) => {
   let isOnCart = false;
   const { id } = req.params;
@@ -72,6 +79,7 @@ const productDetails = async (req, res) => {
   });
 };
 
+//show all Product
 const showAllProducts = async (req, res) => {
   const products = await productModel.find({});
   res.render("manageProduct", {
@@ -79,6 +87,7 @@ const showAllProducts = async (req, res) => {
   });
 };
 
+//delete product
 const deleteProduct = async (req, res) => {
   const { id } = req.params;
   await productModel.deleteOne({
@@ -88,7 +97,8 @@ const deleteProduct = async (req, res) => {
   res.redirect("/product/manage-product");
 };
 
-const getBestViewsAndNews = async (req, res) => {
+//Get Best View And New Product
+const getBestViewsAndNews = async () => {
   const newsProduct = await productModel
     .find({})
     .sort({ createdAt: -1 })
@@ -102,6 +112,7 @@ const getBestViewsAndNews = async (req, res) => {
   };
 };
 
+//Render Edit page
 const editPageRender = async (req, res) => {
   const { id } = req.params;
   const product = await productModel.findById(id);
@@ -111,6 +122,7 @@ const editPageRender = async (req, res) => {
   });
 };
 
+//Edit Product
 const editProduct = async (req, res) => {
   const { title, describe, price, categorie, invent } = req.body;
   const { id } = req.params;
@@ -148,6 +160,8 @@ const editProduct = async (req, res) => {
     res.redirect(req.originalUrl);
   }
 };
+
+//Exports
 module.exports = {
   ShowAddProductPage,
   ShowProducts,

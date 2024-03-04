@@ -52,11 +52,7 @@ router.get("/change-password/:token", userInfo, (req, res) => {
   res.render("changePass"); // this is must Send Token And In Front Click on Action this token Send With Post to Backend
 }); // Render Change Password Page
 
-router.post(
-  "/change-password",
-  validator(changePasswordValidator),
-  changePassword
-); // Change Password
+router.post("/change-password", changePassword); // Change Password
 
 //exports
 module.exports = router;

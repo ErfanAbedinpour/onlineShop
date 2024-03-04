@@ -2,8 +2,10 @@
 <html lang="fa">
 <head>
     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>اضافه کردن محصول</title>
+    <title>salam</title>
+    <link rel="icon" href="img/favicon.png" type="image/png" sizes="16x16">
     <link rel="stylesheet" href="/css/font-awesome.min.css">
     <link rel="stylesheet" href="/css/themify-icons.css">
     <link rel="stylesheet" href="/fonts/flaticon.css">
@@ -27,9 +29,9 @@
             </section>
             <div class="wrapper" style="background-color: #f1f1f1;">
                 <div class="form-container">
-                    <div class="form-inner">
-                        <% if(isEdit) {%>
-                            <form action="/product/edit/<%=product._id%>" class="login" method="post" enctype="multipart/form-data">
+                    <% if(isEdit) {%>
+                        <div class="form-inner">
+                             <form action="/product/edit/<%=product._id%>" class="login" method="post" enctype="multipart/form-data">
                                 <% if(locals.messages.error) {%>
                                     <h5 style="color: red; text-align: center;">
                                         <%=locals.messages.error%>
@@ -43,9 +45,6 @@
                                     <input type="text" placeholder="نام کالا" name="title" value="<%=product.title%>" required>
                                 </div>
                                 <div class="field">
-                                    <input type="text" placeholder="مدل" name="model" required value="<%=product.model%>">
-                                </div>
-                                <div class="field">
                                     <textarea style="width: 390px; height: 200px; border-radius: 5px;" name="describe" id="" cols="30" rows="10" placeholder="توضیحات کالا" ><%=product.describe %></textarea>
                                 </div>
                                 <div class="field" style="margin-top: 170px;">
@@ -56,7 +55,7 @@
                                 </div>
                                 <div class="field" id="Pcate">
                                   <label for="Pcate" style="color: black;">دسته بندی محصول</label>
-                                    <select name="categorie" id="Pcate" style="width: 120px; text-align: center;">
+                                    <select name="subject" id="Pcate" style="width: 120px; text-align: center;">
                                       <option value="computer">کامپیوتر</option>
                                       <option value="accounting">حساب داری</option>
                                       <option value="graphic">گرافیک</option>
@@ -70,13 +69,15 @@
 
                                 <input type="file" name="product_image" id="product_image" style="color: black; padding-top: 70px;">
                                   <label for="product_image" style="text-align: center; color:black;">لطفا عکس جدید محصول را اپلود کنید</label>
-
+                                  
                                 <div class="field btn">
                                     <div class="btn-layer"></div>
                                     <input type="submit" value="ویرایش محصول">
                                 </div>
                             </form>
-                        <% }else {%>
+                        </div>
+                    <% }else{%>
+                        <div class="form-inner">
                             <form action="/product/add-product" class="login" method="post" enctype="multipart/form-data">
                                 <% if(locals.messages.error) {%>
                                     <h5 style="color: red; text-align: center;">
@@ -88,22 +89,13 @@
                                     </h5>
                                 <% } %>
                                 <div class="field">
-                                    <input type="text" placeholder="نام کالا" name="title" required>
+                                    <input type="text" placeholder="تایتل بلاگ" name="title" required>
                                 </div>
-                                <div class="field">
-                                    <input type="text" placeholder="مدل" name="model" required>
+                                <div class="field" style="margin-bottom: 170px; text-align: center;">
+                                    <textarea style="width: 390px; height: 200px; border-radius: 5px;" name="describe" id="" cols="30" rows="10" placeholder="توضیحات بلاگ"></textarea>
                                 </div>
-                                <div class="field">
-                                    <textarea style="width: 390px; height: 200px; border-radius: 5px;" name="describe" id="" cols="30" rows="10" placeholder="توضیحات کالا"></textarea>
-                                </div>
-                                <div class="field" style="margin-top: 170px;">
-                                    <input type="number" placeholder="تعداد" name="invent" style="text-align: center;" required>
-                                </div>
-                                <div class="field">
-                                    <input type="number" placeholder="قیمت" name="price" style="text-align: center;" required>
-                                </div>
-                                <div class="field" id="Pcate">
-                                  <label for="Pcate" style="color: black;">دسته بندی محصول</label>
+                                <div class="field" id="Pcate" style="margin-top: 50px;">
+                                  <label for="Pcate" style="color: black;">موضوع بلاگ</label>
                                     <select name="categorie" id="Pcate" style="width: 120px; text-align: center;">
                                       <option value="computer">کامپیوتر</option>
                                       <option value="accounting">حساب داری</option>
@@ -112,14 +104,14 @@
                                 </div>
                                 
                                   <input type="file" name="product_image" id="product_image" required style="color: black;">
-                                  <label for="product_image" style="text-align: center; color:black;">لطفا عکس محصول را اپلود کنید</label>
+                                  <label for="product_image" style="text-align: center; color:black;">لطفا عکس تایتل را اپلود کنید</label>
                                 <div class="field btn">
                                     <div class="btn-layer"></div>
                                     <input type="submit" value="ثبت کالا">
                                 </div>
                             </form>
-                        <% } %>
-                    </div>
+                        </div>
+                    <% } %>
                 </div>
             </div>
             <footer class="footer-section bg-secondary ptb-40">
