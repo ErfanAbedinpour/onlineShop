@@ -1,0 +1,17 @@
+<!doctype html>
+<html dir="rtl">
+  <head>
+    <title>ممنون از خرید شما</title>
+    <link rel="stylesheet" type="text/css" href="/css/complete.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>ممنون از اقای <%= Process.name %></h1>
+      <p>کد پیگیری شما: <%= Process._id %></p>
+      <p>مبلغ خرید:<%= Process.Price %></p>
+      <p>بد از تایید ایمیل به ارسال میشود<%= Process.email %></p>
+      <a href="/" class="button">بازگشت به خانه</a>
+    </div>
+  </body>
+</html>

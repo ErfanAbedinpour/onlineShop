@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fa">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>لیست سفارشات</title>
+    <link rel="icon" href="img/favicon.png" type="image/png" sizes="16x16">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/themify-icons.css">
+    <link rel="stylesheet" href="/fonts/flaticon.css">
+    <link rel="stylesheet" href="/css/magnific-popup.css">
+    <link href="/css/owl.theme.default.min.css" rel="stylesheet">
+    <link href="/css/owl.carousel.min.css" rel="stylesheet">
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <div id="main" class="main-content-wraper">
+        <div class="main-content-inner">
+            <header class="header">
+                <%-include('partials/_header') %>
+            </header>
+            <section id="hero" class="section-hero section-rotate">
+                <%-include('partials/_title') %>
+            </section>
+            <% if(locals.messages.error) {%>
+                <h3 style="color: red; text-align: center;"><%=locals.messages.error%></h3>
+            <% } %>
+            <h2 style="text-align: center;">مدیریت کاربرها</h2>
+            <section id="discount" class="biz-product-section ptb-40">
+                <div class="container col-md-10 alert alert-primary">
+                    <table class="table table-striped">
+                        <tr class="text-center">
+                            <th>نام و نام خانوادگی</th>
+                            <th>ایمیل یا شماره</th>
+                            <th>قیمت کل</th>
+                            <th>کد سفارش</th>
+                            <th>تاریخ سفارش</th>
+                        </tr>
+                        <% if(orders.length!=0){%>
+                            <% orders.forEach(item=>{%>
+                                <tr class="text-center">
+                                    <td>
+                                        <%=item.name%>
+                                    </td>
+                                    <td>
+                                        <%=item.email%>
+                                    </td>
+                                    <td>
+                                        <%=item.Price%>
+                                    </td>
+                                    <td>
+                                        <%=item._id.toString()%>
+                                    </td>
+                                    <td>
+                                        <%=item.date %>
+                                    </td>
+                                    <td>
+                                        <a href="/order/details/<%=item._id.toString()%>"
+                                            class="btn btn-sm btn-success">دیدن وضعیت</a>
+                                        <a style="background-color: red;" href="/order/delete/<%=item._id.toString()%>"
+                                            class="btn btn-sm btn-danger">کنسل کردن سفارش</a>
+                                    </td>
+                                </tr>
+                                <% }) %>
+                        <% }else {%>
+                            <td colspan="3">سفارشی وجود ندارد</td>
+                        <% } %>
+                    </table>
+                </div>
+            </section>
+            <footer class="footer-section bg-secondary ptb-40">
+                <%-include('partials/_footer') %>
+            </footer>
+        </div>
+    </div>
+    <script src="/js/jquery-3.3.1.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/jquery.easeScroll.min.js"></script>
+    <script src="/js/owl.carousel.min.js"></script>
+    <script src="/js/jquery.easing.min.js"></script>
+    <script src="/js/magnific-popup.min.js"></script>
+    <script src="/js/scripts.js"></script>
+</body>
+
+</html>

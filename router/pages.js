@@ -4,11 +4,15 @@ const { getBestViewsAndNews } = require("../controllers/product");
 const router = Router();
 
 router.get("/", userInfo, async (req, res) => {
-  const { newsProduct: NewProduct, viewsProduct: ViewProducts } =
-    await getBestViewsAndNews();
+  const {
+    newsProduct: NewProduct,
+    viewsProduct: ViewProducts,
+    newBlog,
+  } = await getBestViewsAndNews();
   res.render("index", {
     NewProduct,
     ViewProducts,
+    newBlog,
   });
 });
 

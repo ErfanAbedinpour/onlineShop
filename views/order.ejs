@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>فرم ثبت سفارش</title>
+    <link rel="stylesheet" href="/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="/css/themify-icons.css" />
+    <link rel="stylesheet" href="/fonts/flaticon.css" />
+    <link rel="stylesheet" href="/css/magnific-popup.css" />
+    <link href="/css/owl.theme.default.min.css" rel="stylesheet" />
+    <link href="/css/owl.carousel.min.css" rel="stylesheet" />
+    <link href="/css/bootstrap.min.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="container">
+      <link rel="stylesheet" href="/css/order.css" />
+      <div class="title">
+        <h2>لطفا فرم زیر را پر کنید</h2>
+      </div>
+      <div class="d-flex">
+        <form action="/order/" method="post">
+          <label>
+            <span class="fname"
+              >نام و نام خوانوادگی <span class="required">*</span></span
+            >
+            <input type="text" name="name" required />
+          </label>
+          <label>
+            <span>ادرس <span class="required">*</span></span>
+            <input type="text" name="address" required />
+          </label>
+          <label>
+            <span>شماره تماس <span class="required">*</span></span>
+            <input type="tel" name="phone" required />
+          </label>
+          <label>
+            <span>ایمیل <span class="required">*</span></span>
+            <input type="email" name="email" required />
+          </label>
+          <div>
+            <input
+              type="radio"
+              id="method"
+              name="method"
+              value="Bank"
+              checked
+              required />
+            پرداخت از طریق کارت بانکی
+          </div>
+          <div>
+            <input
+              type="radio"
+              id="method"
+              name="method"
+              value="home"
+              required />
+            پرداخت درب منزل
+          </div>
+          <button type="submit">خرید</button>
+        </form>
+        <div class="Yorder">
+          <table>
+            <tr>
+              <th colspan="2">خرید شما</th>
+            </tr>
+            <tr>
+              <td>کد سبد خرید شما</td>
+              <td><%= Cart._id.toString() %></td>
+            </tr>
+            <tr>
+              <td>قیمت کل</td>
+              <td><%= Cart.TotlaPrice %></td>
+            </tr>
+          </table>
+          <br />
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

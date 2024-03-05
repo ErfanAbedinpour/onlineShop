@@ -96,6 +96,43 @@
                     </div>
                 </div>
             </section>
+
+            <section id="discount" class="biz-product-section ptb-40">
+                <div class="biz-product-wrap">
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-md-6">
+                                <div class="text-center section-heading">
+                                    <h3>جدید ترین بلاگ ها</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="owl-carousel owl-theme biz-products carousel-indicator">
+                                    <!-- Newer Blog -->
+                                    <% newBlog.forEach(item=>{%>
+                                        <div class="biz-single-product item">
+                                            <div class="biz-product-img border">
+                                                <img src='data:<%=item.image.contentType%>;base64,<%=item.image.data.toString('base64') %>' alt='Smart Product' class='img-responsive'></div>
+                                            <div class="biz-product-content">
+                                                <p> نام: <%=item.title %></p>
+                                                <div class="price">
+                                                </div>
+                                                <p>تاریخ: <%=item.date %></p>
+                                                <div class="product-action-btn text-center mt-20">
+                                                <a href="/blog/details/<%=item._id.toString()%>">مشاهده جزئیات</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    <% }) %>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
             <hr>
             <section id="contact" class="contact-us ptb-90">
                 <div class="contact-us-wrap">

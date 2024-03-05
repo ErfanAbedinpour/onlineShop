@@ -1,5 +1,4 @@
 const BlogModel = require("../models/blog");
-
 const shows = async (req, res) => {
   const blogs = await BlogModel.find({});
   res.render("blog", {
@@ -36,7 +35,27 @@ const addBlog = async (req, res) => {
     res.redirect(req.originalUrl);
   }
 };
+
+const editRenderPage = async (req, res) => {
+  const { id } = req.params;
+  const blog = await BlogModel.findById(id);
+  res.render("addBlog", {
+    isEdit: true,
+    blog,
+  });
+};
+
+const showDetails = async (req, res) => {
+  const { id } = req.params;
+  const blog = await BlogModel.findById(id);
+  res.render("BlogDetails", {
+    blog,
+    userName: req.user.userName,
+  });
+};
 module.exports = {
   shows,
   addBlog,
+  editRenderPage,
+  showDetails,
 };

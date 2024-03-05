@@ -46,6 +46,11 @@ const addToCart = async (req, res) => {
 const ShowCarts = async (req, res) => {
   const { _id } = req.user;
   const user = await cartModel.findOne({ user: _id });
+  if (!user) {
+    return res.render("cart", {
+      isNull: true,
+    });
+  }
   res.cookie("cartId", user._id);
   const Products = await ProductModel.find({ _id: { $in: user.products } });
   let maxPrice = 0;
@@ -67,6 +72,7 @@ const ShowCarts = async (req, res) => {
     products: Products,
     Price: maxPrice,
     repeat: itemReapet,
+    isNull: false,
   });
 };
 

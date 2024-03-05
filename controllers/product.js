@@ -1,6 +1,6 @@
 const productModel = require("../models/product");
 const cartModel = require("../models/cart");
-
+const Blog = require("../models/blog");
 //show product With Category
 const ShowProducts = async (req, res) => {
   const computer = await productModel.find({
@@ -105,10 +105,11 @@ const getBestViewsAndNews = async () => {
     .limit(5);
 
   const viewsProduct = await productModel.find({}).sort({ view: -1 }).limit(5);
-
+  const newBlog = await Blog.find({}).sort({ date: -1 }).limit(5);
   return {
     newsProduct,
     viewsProduct,
+    newBlog,
   };
 };
 
