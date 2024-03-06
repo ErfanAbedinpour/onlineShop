@@ -58,7 +58,7 @@ jQuery(function ($) {
             {
               scrollTop: $($anchor.attr("href")).offset().top - 59,
             },
-            900,
+            600,
             "easeInOutExpo"
           );
         event.preventDefault();

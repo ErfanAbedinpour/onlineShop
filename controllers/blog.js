@@ -16,11 +16,12 @@ const addBlog = async (req, res) => {
       req.flash("error", "لطفا فرمت فایل صحیح نیست");
       return res.redirect(req.originalUrl);
     }
-    const { title, describe, subject } = req.body;
+    const { title, describe, subject, shortDescribe } = req.body;
     const b = new BlogModel({
       title,
       describe: describe.trim(),
       subject,
+      shortDescribe,
       image: {
         data: req.file.buffer,
         contentType: req.file.mimetype,

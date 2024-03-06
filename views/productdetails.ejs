@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>فروشگاه کامپیوتر</title>
+    <title>مشخصات کالا ها</title>
     <link rel="icon" href="img/favicon.png" type="image/png" sizes="16x16" />
     <link rel="stylesheet" href="css/font-awesome.min.css" />
     <link rel="stylesheet" href="css/themify-icons.css" />
@@ -53,12 +53,31 @@
                       خرید
                     </button>
                   <% } %>
-                
               </form>
-              
             </div>
           </div>
         </section>
+        <div class="container mt-5">
+            <h4>نوشتن کامنت</h4>
+            <form>
+              <div class="form-group">
+                <label for="comment" style="color: black;">لطفا نظر خود را برای بهبود ما وارد کنید:</label>
+                <textarea class="form-control" rows="5" id="comment"></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary">ثبت</button>
+            </form>
+            <hr />
+            <h2>کامنت‌ها</h2>
+            <% if(comment.length==0) {%>
+              <h4>کامنتی وجود ندارد</h4>
+            <% }else {%>
+              <% comment.fotEach(item=>{ %>
+                <div class="card" style="color: black;">
+                  <div class="card-body"><%=item.text%></div>
+                </div>
+              <% }) %>
+            <% } %>
+        </div>
         <footer class="footer-section bg-secondary ptb-40">
           <%-include('partials/_footer') %>
         </footer>

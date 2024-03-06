@@ -23,6 +23,46 @@
         line-height: 20px;
         font-size: 12px;
     }
+    .profile-circle {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background-color: #ccc;
+        overflow: hidden;
+        position: relative;
+    }
+  
+    .profile-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .dropdown {
+        display: inline-block;
+        position: relative;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: white;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    .dropdown-content a {
+      color: black;
+      text-decoration: none;
+      display: block;
+      padding: 10px;
+    }
+
 
 </style>
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
@@ -32,45 +72,55 @@
             <% if(!locals.messages.isLogin) {%>
                 <li><a href="/auth/singup">ثبت نام</a></li>
                 <li><a href="/auth/login">ورود</a></li>
-            <% }else{%>
-                <li><img src="/img/chagePass.png" style="height: 28px; width: 30px;" alt=""></li>
-                <li><a href=""><%= locals.messages.userName %></a></li>
-                <li><a href="/auth/logout">خروج از اکانت</a></li>
-                <div class="product-container">
-                    <div class="product-count"><%= locals.messages.cartCount%></div>
-                    <a href="/cart/"><img src="/img/cart.png" alt="عکس محصول" class="product-image" style="height: 30px; "></a>
-                </div>
-                <div class="product-container">
-                    <div class="product-count"><%= locals.messages.ordcount %></div>
-                    <li ><a href="/order/Follow/">سفارشات</a></li>
-                </div>
-                
+            <% }else{%>       
+                <li >        
+                    <div class="product-container">
+                        <div class="product-count"><%= locals.messages.ordcount %></div>
+                        <a href="/order/Follow/" style="padding-left: 10px;">سفارشات</a>
+                    </div>
+                </li>
             <% } %>
         </ul>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbar"
-            aria-controls="myNavbar" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav mr-auto navbar-right">
-                <a href="/blog/" style="padding-left: 7px; color: white;">مقالات</a>
-                <li><a class="page-scroll" href="/">محصولات پر بازدید</a></li>
-                <a href="/product/" style="padding-left: 7px; color: white;">همه محصولات</a>
-                <li><a class="page-scroll" href="#contact">تماس با ما</a></li>
-                <li>    
-                </li>
+                <a  href="/blog/" style="padding-left: 13px; color: white;">مقالات</a>
+                <li><a  class="page-scroll" href="#products" color: white;">محصولات پر بازدید</a></li>
+                <a  href="/product/" style="padding-left: 13px; color: white;">همه محصولات</a>
+                <li><a  class="page-scroll" href="#contact" color: white;">تماس با ما</a></li>
+                <a href="/aboutme" style="padding-left: 13px; color: white;">درباره ما</a>
+            </ul>
+            <ul class="collapse navbar-collapse" style="padding-right: 20px;" >
                 <% if(locals.messages.isLogin && locals.messages.isAdmin){%>
                     <div class="product-container">
                         <div class="product-count"><%= locals.messages.mailCount%></div>
                         <a href="/mail/"><img src="/img/mailbox.png" alt="عکس محصول" class="product-image" style="height: 30px; "></a>
                     </div>
-                    <a href="/user/" style="padding-right: 20px;"><img src="/img/user.png" alt="UsersList" class="product-image" style="height: 30px;"></a>
-                    <a href="/user/add-user/" style="padding-right: 20px;"><img src="/img/add-user.png" alt="UsersList" class="product-image"style="height: 30px;"></a>
-                    <a href="/product/add-product" style="padding-right: 20px;"><img src="/img/add-product.png" alt="UsersList" class="product-image"style="height: 30px;"></a>
-                    <a href="/product/manage-product" style="padding-right: 20px;"><img src="/img/products.png" alt="UsersList" class="product-image"style="height: 30px;"></a>
-                    <a href="/blog/add" style="padding-right: 20px;"><img src="/img/blog.png" alt="UsersList" class="product-image"style="height: 30px;"></a>
+                    <a style="padding-right: 10px;" href="/user/"><img src="/img/user.png" alt="UsersList" class="product-image" style="height: 30px;"></a>
+                    <a style="padding-right: 10px;" href="/user/add-user/"><img src="/img/add-user.png" alt="UsersList" class="product-image"style="height: 30px;"></a>
+                    <a style="padding-right: 10px;" href="/product/add-product"><img src="/img/add-product.png" alt="UsersList" class="product-image"style="height: 30px;"></a>
+                    <a style="padding-right: 10px;" href="/product/manage-product"><img src="/img/products.png" alt="UsersList" class="product-image"style="height: 30px;"></a>
+                    <a style="padding-right: 10px;" href="/blog/add"><img src="/img/blog.png" alt="UsersList" class="product-image"style="height: 30px;"></a>
                 <% } %>
             </ul>
+            <% if(locals.messages.isLogin) {%>
+                <ul class="nav navbar-nav mr-auto navbar-left">
+                    <div class="dropdown" style="padding-left: 5px;">
+                        اقای <%=locals.messages.userName %> 
+                        <ul class="dropdown-content">
+                            <a href="/auth/logout/" style="color: red; text-align: center;">خروج از اکانت</a>
+                            <a href="/auth/edit/" style="color: black; text-align: center;">تغییر پروفایل کاربر</a>
+                        </ul>
+                    </div>
+                    <li class="profile-circle">
+                        <img class="profile-img" src="<%=locals.messages.profile %>" alt="User Avatar">    
+                    </li>
+                    <li class="product-container">
+                        <div class="product-count"><%= locals.messages.cartCount%></div>
+                        <a href="/cart/"><img src="/img/cart.png" alt="عکس محصول" class="product-image" style="height: 30px; "></a>
+                    </li>                    
+                </ul>
+
+            <% } %>
         </div>
     </div>
 </nav>

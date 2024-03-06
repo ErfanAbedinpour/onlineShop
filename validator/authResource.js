@@ -41,6 +41,7 @@ const singUp = joi.object({
     .required(),
 
   role: joi.string().valid("ADMIN", "USER"),
+  profile: {},
 });
 
 //Login Input Validator
@@ -115,7 +116,6 @@ const ProductAdd = joi.object({
     .error(new Error("لطفا  یک نام معتبر برای محصول وارد کنید")),
   describe: joi
     .string()
-    .regex(/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/)
     .error(new Error("لطفا یک توضیح برای محصول بنویسید"))
     .required(),
   price: joi
@@ -125,9 +125,10 @@ const ProductAdd = joi.object({
     .error(new Error("محصول بدون قیمت نمیشه ک میشه؟")),
   model: joi
     .string()
-    .email()
     .required()
     .error(new Error("به هر حال یک مدلی هم داره دیگ؟")),
+  invent: joi.string().required().error(new Error("لطفا تعداد را وارد کنید")),
+  categorie: joi.string().required(),
 });
 
 module.exports = {

@@ -8,7 +8,8 @@ require("dotenv").config();
 //Singup Controller
 const singup = async (req, res) => {
   //Get ReqBody
-  const data = { ...req.body };
+  let data = { ...req.body };
+  let image = {};
   //Check User identified
   const isExsistIdentified = await userModel.findOne({
     identified: data.identified,
@@ -21,6 +22,13 @@ const singup = async (req, res) => {
     );
     return res.redirect(req.originalUrl);
   }
+
+  if (req.file) {
+    image = {
+      data: req.file.buffer,
+      contentType: req.file.mimetype,
+    };
+  }
   //Register User
   const HashPass = await bcrypt.hash(data.password, 11);
   const countOfDoc = await userModel.countDocuments();
@@ -28,6 +36,7 @@ const singup = async (req, res) => {
     userName: data.userName,
     password: HashPass,
     identified: data.identified,
+    profile: image,
     role: countOfDoc == 0 ? "ADMIN" : "USER",
   });
   //Send Response
@@ -37,8 +46,7 @@ const singup = async (req, res) => {
 //Login Controller
 const login = async (req, res) => {
   //Check To if Token Exsist
-  let token = req.cookies?.token;
-  if (token) {
+  if (req.isLogin) {
     return res.redirect("/");
   }
   const { identified, password } = req.body;

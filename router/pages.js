@@ -9,11 +9,16 @@ router.get("/", userInfo, async (req, res) => {
     viewsProduct: ViewProducts,
     newBlog,
   } = await getBestViewsAndNews();
+
   res.render("index", {
     NewProduct,
     ViewProducts,
     newBlog,
   });
+});
+
+router.get("/aboutme", userInfo, (req, res) => {
+  res.render("about");
 });
 
 router.get("/mail-box", userInfo, (req, res) => {

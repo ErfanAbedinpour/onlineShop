@@ -14,6 +14,10 @@ const userSchema = new mongoose.Schema(
     password: { type: String, required: true },
     role: { type: String, enums: ["ADMIN", "USER"] },
     isBan: { type: Boolean, default: false },
+    profile: {
+      data: Buffer,
+      contentType: String,
+    },
   },
   {
     timestamps: true,

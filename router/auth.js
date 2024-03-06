@@ -15,6 +15,7 @@ const {
   changePassword: changePasswordValidator,
 } = require("../validator/authResource");
 const userInfo = require("../middlewares/userInfo");
+const uploader = require("../uploader/uplodaer");
 //router
 const router = Router();
 router
@@ -29,7 +30,7 @@ router
   .get(userInfo, (req, res) => {
     res.render("singup");
   })
-  .post(CheckMethod, validator(singUp), singup);
+  .post(uploader.single("profile"), CheckMethod, validator(singUp), singup);
 
 router.get("/logout", (req, res) => {
   res.clearCookie("token");

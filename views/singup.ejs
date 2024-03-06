@@ -27,13 +27,13 @@
             <section id="hero" class="section-hero section-rotate">
                 <%-include('partials/_title') %>
             </section>
-            <div class="wrapper">
-                <div class="form-container">
+            <div class="wrapper" style="background-color: #f1f1f1">
+                <div class="form-container"  >
                     <div class="form-inner">
                         <% if(locals.messages.accsess) {%>
-                        <form action="/user/add-user" class="login" method="post">
+                        <form action="/user/add-user" class="login" method="post" enctype="multipart/form-data">
                         <% }else {%>
-                        <form action="/auth/singup" class="login" method="post">
+                        <form action="/auth/singup" class="login" method="post" enctype="multipart/form-data">
                         <% } %>
                             <% if(locals.messages.error) {%>
                                 <h5 style="color: red; text-align: center;">
@@ -63,12 +63,15 @@
                                     </select>
                                 </div>
                             <% } %>
+                            <br>
+                            <label for="user_profile" style="text-align: center; color:black; margin-bottom: 10px;">لطفا پروفایل خود را اپلود کنید</label>
+                            <input type="file" name="profile" id="user_profile" style="color: black;">
                             <div class="field btn">
                                 <div class="btn-layer"></div>
                                 <input type="submit" value="ورود">
                             </div>
                             <% if(!locals.messages.accsess){%>
-                                <div class="signup-link" style="color: black;">اکانت دارید? <a href="">ورود</a></div>
+                                <div class="signup-link" style="color: black;">اکانت دارید? <a href="/auth/login">ورود</a></div>
                             <% } %>
                         </form>
                     </div>

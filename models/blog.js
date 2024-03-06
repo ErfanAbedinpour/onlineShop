@@ -9,6 +9,7 @@ require("dotenv").config();
 const blogSchma = new mongoose.Schema({
   title: { type: String, required: true },
   describe: { type: String, required: true },
+  shortDescribe: { type: String, required: true },
   user: { type: mongoose.Types.ObjectId, required: true },
   image: {
     data: Buffer,

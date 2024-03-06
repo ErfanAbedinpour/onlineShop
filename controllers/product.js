@@ -1,5 +1,6 @@
 const productModel = require("../models/product");
 const cartModel = require("../models/cart");
+const CommentModel = require("../models/comments");
 const Blog = require("../models/blog");
 //show product With Category
 const ShowProducts = async (req, res) => {
@@ -67,18 +68,33 @@ const productDetails = async (req, res) => {
   const product = await productModel.findByIdAndUpdate(id, {
     $inc: { view: 1 },
   });
+  const comments = await CommentModel.find({ _id: { $in: product.comments } });
   const userCart = await cartModel.findOne({ user: req.user._id.toString() });
   if (userCart) {
     if (userCart.products.includes(id)) {
       isOnCart = true;
     }
   }
+  console.log("Comments is", product.comments);
   res.render("productdetails", {
     product,
     isOnCart,
+    comments,
   });
 };
 
+//add Comment
+const addComment = async (req, res) => {
+  const { id } = req.body;
+  const { text } = req.body;
+  const comment = await CommentModel.create({
+    user: req.user._id,
+    text,
+  });
+  await productModel.findByIdAndUpdate(id, {
+    $push: { comments: comment._id },
+  });
+};
 //show all Product
 const showAllProducts = async (req, res) => {
   const products = await productModel.find({});

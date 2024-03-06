@@ -1,0 +1,95 @@
+<!doctype html>
+<html dir="rtl">
+  <head>
+    <title>در باره ما</title>
+    <link rel="stylesheet" href="/css/about.css" />
+    <link rel="icon" href="img/favicon.png" type="image/png" sizes="16x16" />
+    <link rel="stylesheet" href="/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="/css/themify-icons.css" />
+    <link rel="stylesheet" href="/fonts/flaticon.css" />
+    <link rel="stylesheet" href="/css/magnific-popup.css" />
+    <link href="/css/owl.theme.default.min.css" rel="stylesheet" />
+    <link href="/css/owl.carousel.min.css" rel="stylesheet" />
+    <link href="/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/css/style.css" rel="stylesheet" />
+    <style>
+      #img {
+        height: 370px;
+        width: 430px;
+        display: block;
+      }
+      .about {
+        background-color: gray;
+        color: black;
+      }
+      .dect {
+        text-decoration: none;
+        color: black;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header class="header"><%-include('partials/_header') %></header>
+    <section id="hero" class="section-hero section-rotate">
+      <%-include('partials/_title') %>
+    </section>
+    <div class="about-container">
+      <div class="about-content">
+        <div class="about-content">
+          <h1>در باره مدرسه</h1>
+          <p style="color: black">
+            هنرستان پسرانه امام خمینی (ره) بابل در استان مازندران از جمله بهترین
+            مدارس دولتی می‌باشد. این مدرسه به دانش‌آموزان فنی و حرفه‌ای در
+            رشته‌ها‌ی حسابداری، شبکه و نرم‌افزار رایانه و گرافیک، خدمات آموزشی
+            ارائه می‌نماید. مدیریت مجموعه را <strong>علیرضامهدی</strong> نیا بر
+            عهده دارد. اولیای گرامی دانش‌آموزان بابل می‌توانند جهت مشاوره و نیز
+            انجام امور ثبت‌ نام به صورت حضوری با مراجعه به هنرستان پسرانه امام
+            خمینی (ره) در نشانی بابل میدان ولایت هنرستان امام خمینی (ره)؛ کدپستی
+            4716149493 یا غیر حضوری از طریق تماس تلفنی با 32230156 یا 32192012
+            (پیش‌شماره: 011) اقدام فرمایند
+          </p>
+          <h2>دارای رشته های</h2>
+          <ul>
+            <li class="about">
+              <a class="dect" href="/about/computer">کامپیوتر</a>
+            </li>
+            <li class="about">
+              <a class="dect" href="/about/graphic">گرافیک</a>
+            </li>
+            <li class="about">
+              <a class="dect" href="/about/accounting">حساب داری</a>
+            </li>
+          </ul>
+          <h2 style="margin-bottom: 20px">امکانات</h2>
+          <ul>
+            <li class="about">زمین فوتسال</li>
+            <li class="about">زمین بسکتبال</li>
+            <li class="about">زمین والیبال</li>
+            <li class="about">دارای ۲ کارگاه</li>
+            <li class="about">نمازخانه</li>
+            <li class="about">حیاط بزرگ</li>
+          </ul>
+        </div>
+      </div>
+      <div class="about-image">
+        <img
+          style="padding-bottom: 20px"
+          id="img"
+          src="/img/Emam.jpeg"
+          alt="John Doe" />
+        <img id="img" src="/img/Emam2.jpg" alt="John Doe" />
+      </div>
+    </div>
+    <footer class="footer-section bg-secondary ptb-40">
+      <%-include('partials/_footer')%>
+    </footer>
+    <script src="/js/jquery-3.3.1.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/jquery.easeScroll.min.js"></script>
+    <script src="/js/owl.carousel.min.js"></script>
+    <script src="/js/jquery.easing.min.js"></script>
+    <script src="/js/magnific-popup.min.js"></script>
+    <script src="/js/scripts.js"></script>
+  </body>
+</html>

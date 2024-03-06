@@ -198,7 +198,7 @@ html {
 -------------------------------------------*/
 body {
   font-weight: 400;
-  background: #9fcdff;
+  background: #deecfb;
   font-family: "iranyekan", "Open Sans", sans-serif;
   color: #ffffff;
   font-size: 15px;
@@ -1052,6 +1052,8 @@ SECTION MARGIN
 
 .navbar {
   background-color: #005cbf;
+  font-weight: bold;
+  font-size: medium;
 }
 
 .navbar .nav.navbar-nav {
@@ -1159,7 +1161,7 @@ SECTION MARGIN
 
   .navbar.top-nav-collapse {
     padding: 15px 0;
-    background: #005cbf;
+    background: #1666ba;
   }
 
   .navbar .navbar-brand {
@@ -1217,6 +1219,7 @@ SECTION MARGIN
   color: #fff;
   text-align: right;
 }
+
 .hero-img-1 {
   position: relative;
   z-index: 3;
@@ -1229,6 +1232,7 @@ SECTION MARGIN
   -webkit-animation-iteration-count: infinite;
   -webkit-animation-timing-function: linear;
 }
+
 .offer-badge {
   position: absolute;
   left: 10%;
@@ -1258,20 +1262,7 @@ SECTION MARGIN
   line-height: 30px;
 }
 /*Cam Animation*/
-@-webkit-keyframes hero-img-animation {
-  0% {
-    -webkit-transform: translateY(-20px);
-    transform: translateY(-20px);
-  }
-  50% {
-    -webkit-transform: translateY(-10px);
-    transform: translateY(-10px);
-  }
-  100% {
-    -webkit-transform: translateY(-25px);
-    transform: translateY(-25px);
-  }
-}
+
 @keyframes hero-img-animation {
   0% {
     -webkit-transform: translateY(-20px);
@@ -1289,6 +1280,8 @@ SECTION MARGIN
 
 .hero-img-1 img {
   margin: 0 auto;
+  border: 5px;
+  border-radius: 10px;
 }
 
 /*white indicator*/
@@ -1976,7 +1969,7 @@ SECTION MARGIN
   border-radius: 4px;
   transition: all 0.3s;
   -webkit-transition: all 0.3s;
-  background: #fff;
+  background: #deecfb;
 }
 .biz-single-product:hover {
   transform: translate3d(0, -5px, 0);
@@ -2033,7 +2026,7 @@ SECTION MARGIN
     0 1px 3px rgba(0, 0, 0, 0.08);
 }
 .carousel-indicator.owl-theme .owl-nav [class*="owl-"]:hover {
-  background: #f17079;
+  background: #368ce7;
 }
 .carousel-indicator .owl-nav button:focus {
   outline: none;

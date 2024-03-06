@@ -6,6 +6,7 @@ const session = require("express-session");
 const flash = require("express-flash");
 const middleware = require("./middlewares/publucMiddlewares");
 const userInfo = require("./middlewares/userInfo");
+require("dotenv").config();
 //Main
 const app = express()
   .use(express.urlencoded({ extended: false }))
@@ -42,6 +43,7 @@ const productRouter = require("./router/product");
 const CartRouter = require("./router/cart");
 const BlogRouter = require("./router/blog");
 const orderRouter = require("./router/order");
+
 //Router
 app.use("/", pages);
 app.use("/auth", authRouter);
@@ -51,6 +53,7 @@ app.use("/product", productRouter);
 app.use("/cart", CartRouter);
 app.use("/blog", BlogRouter);
 app.use("/order", orderRouter);
+
 //404 Page
 app.use(userInfo, (req, res) => {
   res.render("404");

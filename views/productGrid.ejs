@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>هنرستان ماندگار</title>
+    <title>کالا ها</title>
     <link rel="icon" href="img/favicon.png" type="image/png" sizes="16x16" />
     <link rel="stylesheet" href="/css/font-awesome.min.css" />
     <link rel="stylesheet" href="/css/themify-icons.css" />
@@ -39,7 +39,7 @@
                   <% if(computerProduct.length>=1) {%>
                     class="owl-carousel owl-theme biz-products carousel-indicator">
                       <% computerProduct.forEach(item=>{ %>
-                        <div class="biz-single-product item">
+                        <div class="biz-single-product item" style="border:10px solid #7ab3ef">
                           <div class="biz-product-img border">
                             <img
                               src="data:<%=item.image.contentType%>;base64,<%=item.image.data.toString('base64') %>"
@@ -89,7 +89,7 @@
                   <% if(accountProduct.length>=1) {%>
                     class="owl-carousel owl-theme biz-products carousel-indicator">
                       <% accountProduct.forEach(item=>{ %>
-                        <div class="biz-single-product item">
+                        <div class="biz-single-product item" style="border:10px solid #7ab3ef">
                           <div class="biz-product-img border">
                             <img
                               src="data:<%=item.image.contentType%>;base64,<%=item.image.data.toString('base64') %>"
@@ -135,7 +135,7 @@
                   <% if(graphicProduct.length>=1) {%>
                     class="owl-carousel owl-theme biz-products carousel-indicator">
                       <% graphicProduct.forEach(item=>{ %>
-                        <div class="biz-single-product item">
+                        <div class="biz-single-product item" style="border:10px solid #7ab3ef">
                           <div class="biz-product-img border">
                             <img
                               src="data:<%=item.image.contentType%>;base64,<%=item.image.data.toString('base64') %>"
