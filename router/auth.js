@@ -6,6 +6,7 @@ const {
   login,
   resetPassword,
   changePassword,
+  edit,
 } = require("../controllers/auth");
 const { CheckMethod } = require("../middlewares/authMiddleware");
 const validator = require("../middlewares/validator.middleware");
@@ -55,5 +56,13 @@ router.get("/change-password/:token", userInfo, (req, res) => {
 
 router.post("/change-password", changePassword); // Change Password
 
+router
+  .route("/edit")
+  .get(userInfo, (req, res) => {
+    res.render("editProfile", {
+      user: req.user,
+    });
+  })
+  .post(uploader.single("profile"), edit);
 //exports
 module.exports = router;

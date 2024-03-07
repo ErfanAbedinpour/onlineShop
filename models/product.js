@@ -26,6 +26,8 @@ const ProductSchema = new mongoose.Schema(
     view: { type: Number, default: 0 },
     purches: { type: Number, default: 0 },
     comments: [{ type: mongoose.Types.ObjectId, ref: "Comment" }],
+    isDiscount: { type: Boolean, default: false },
+    disCount: { type: String, default: 0 },
   },
   {
     timestamps: true,

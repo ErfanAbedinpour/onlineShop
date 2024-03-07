@@ -33,9 +33,9 @@
             <div class="container col-md-10 alert alert-primary">
               <table class="table table-striped">
                 <tr class="text-center">
-                  <td>نام دستگاه</td>
-                  <td>مدل دستگاه</td>
-                  <td>تعداد دستگاه</td>
+                  <td>نام </td>
+                  <td>مدل </td>
+                  <td>تعداد </td>
                   <td>قیمت</td>
                 </tr>
                 <% products.forEach(item=>{ %>
@@ -43,7 +43,7 @@
                     <td><%=item.title %></td>
                     <td><%=item.model %></td>
                     <td><a href="/cart/inc/<%=item.id.toString() %>"><span style="border: 1px solid black; padding: 2px 10px;">+</span></a>  <%=repeat[item._id]%>  <a href="/cart/delete/<%=item.id.toString() %>"><span style="border: 1px solid black; padding: 2px 10px;">-</span></a></td>
-                    <td><%=item.price %></td>
+                    <td><%=item.price%></td>
                     <td>
                       <a href="/cart/delete/<%=item._id.toString() %>" class="btn btn-sm btn-danger">حذف</a>
                     </td>

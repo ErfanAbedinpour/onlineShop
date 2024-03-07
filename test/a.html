@@ -1,110 +1,43 @@
-<% if(isEdit){%>
-<form
-  action="/product/edit/<%=product._id%>"
-  method="post"
-  enctype="multipart/form-data">
-  <% if(locals.messages.error) {%>
-  <h3 style="color: red; text-align: center"><%=locals.messages.error %></h3>
-  <% }else if(locals.messages.succsess) {%>
-  <h3 style="color: green; text-align: center">
-    <%=locals.messages.succsess %>
-  </h3>
-  <% } %>
-  <label for="product_name">نام کالا:</label><br />
-  <input
-    type="text"
-    id="product_name"
-    name="title"
-    value="<%=product.title %>"
-    required /><br />
-  <label for="product_price">موجودی کالا:</label><br />
-  <input
-    type="number"
-    id="product_price"
-    name="invent"
-    min="0"
-    value="<%=product.invent%>"
-    required /><br />
-  <label for="product_description">توضیحات کالا:</label><br />
-  <textarea
-    id="product_description"
-    name="describe"
-    rows="4"
-    cols="50"
-    required>
-<%=product.describe%></textarea
-  ><br />
-  <label for="product_price">قیمت کالا:</label><br />
-  <input
-    type="text"
-    id="product_price"
-    name="price"
-    min="0"
-    value="<%=product.price%>"
-    required /><br />
-  <label for="product_category">دسته بندی کالا:</label><br />
-  <select class="select" name="categorie" id="categories">
-    <option value="computer">کامپیوتر</option>
-    <option value="graphic">گرافیک</option>
-    <option value="accounting">حسابداری</option>
-  </select>
-  <br />
-  <label for="pimg">تصویر کالا</label>
-  <img
-    style="height: 250px; width: 250px"
-    id="pimg"
-    src="data:<%=product.image.contentType%>;base64,<%=product.image.data.toString('base64') %>"
-    alt="" />
-  <label for="product_image">تصویر جدید کالا:</label><br />
-  <input
-    type="file"
-    id="product_image"
-    name="product_image"
-    accept="image/jpg, image/jpeg" /><br />
-  <input type="submit" value="ویرایش کالا" />
-</form>
-<% }else{%>
-<form action="/product/add-product" method="post" enctype="multipart/form-data">
-  <% if(locals.messages.error) {%>
-  <h3 style="color: red; text-align: center"><%=locals.messages.error %></h3>
-  <% }else if(locals.messages.succsess) {%>
-  <h3 style="color: green; text-align: center">
-    <%=locals.messages.succsess %>
-  </h3>
-  <% } %>
-  <label for="product_name">نام کالا:</label><br />
-  <input type="text" id="product_name" name="title" required /><br />
-  <label for="product_price">موجودی کالا:</label><br />
-  <input
-    type="number"
-    id="product_price"
-    name="invent"
-    min="0"
-    required /><br />
-  <label for="product_description">توضیحات کالا:</label><br />
-  <textarea
-    id="product_description"
-    name="describe"
-    rows="4"
-    cols="50"
-    required></textarea
-  ><br />
-  <label for="product_price">قیمت کالا:</label><br />
-  <input type="text" id="product_price" name="price" min="0" required /><br />
-  <label for="product_category">دسته بندی کالا:</label><br />
-  <select class="select" name="categorie" id="categories">
-    <option value="computer">کامپیوتر</option>
-    <option value="graphic">حسابداری</option>
-    <option value="accounting">گرافیک</option>
-  </select>
-  <br />
-  <label for="product_image">تصویر کالا:</label><br />
-  <input
-    type="file"
-    id="product_image"
-    name="product_image"
-    accept="image/jpg, image/jpeg"
-    required /><br />
-  <input type="submit" value="ثبت کالا" />
-</form>
-<% } %>
+<style>
+  /* Styles for wrapping the search box */
+
+  .main {
+    width: 50%;
+    margin: 50px auto;
+  }
+
+  /* Bootstrap 4 text input with search icon */
+
+  .has-search .form-control {
+    padding-left: 2.375rem;
+  }
+
+  .has-search .form-control-feedback {
+    position: absolute;
+    z-index: 2;
+    display: block;
+    width: 2.375rem;
+    height: 2.375rem;
+    line-height: 2.375rem;
+    text-align: center;
+    pointer-events: none;
+    color: #aaa;
+  }
+</style>
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" />
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+<div class="main">
+  <div class="input-group">
+    <input type="text" class="form-control" placeholder="Search this blog" />
+    <div class="input-group-append">
+      <button class="btn btn-secondary" type="button">
+        <i class="fa fa-search"></i>
+      </button>
+    </div>
+  </div>
+</div>

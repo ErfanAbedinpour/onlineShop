@@ -16,6 +16,7 @@ router.get("/unban/:id", controller.unBan);
 
 router.get("/delete/:id", controller.remove);
 
+router.get("/search/", controller.search);
 router.get("/add-user", userInfo, (req, res) => {
   req.flash("accsess", true);
   res.render("singup");

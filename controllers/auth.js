@@ -69,7 +69,7 @@ const login = async (req, res) => {
   });
   res.cookie("token", token, {
     httpOnly: true,
-    maxAge: 30000000000,
+    maxAge: 3e9,
   });
   //Sending Response
   return res.redirect("/");
@@ -131,7 +131,66 @@ const changePassword = async (req, res) => {
   }
 };
 
+//Edit User Profile
+const edit = async (req, res) => {
+  let image = {};
+  let data = {};
+  const user = await userModel.findById(req.user._id);
+  const { oldPass } = req.body;
+  const isCurrentUser = await bcrypt.compare(oldPass, user.password);
+  if (!isCurrentUser) {
+    req.flash("error", "پسورد وارد شده صحیح نیست");
+    return res.redirect(req.originalUrl);
+  }
+
+  if (req.body.password) {
+    const { password, confirmPassword } = req.body;
+    if (password != confirmPassword) {
+      req.flash("error", "پسورد ها همخونی ندارند");
+      return res.redirect(req.originalUrl);
+    }
+    const hashPass = await bcrypt.hash(password, 11);
+    data["password"] = hashPass;
+  }
+
+  if (req.body.identified) {
+    const { identified } = req.body;
+    const isExsistUser = await userModel.findOne({
+      identified,
+    });
+    if (isExsistUser) {
+      console.log("User is", isExsistUser);
+      req.flash("error", "شخصی با این نام کاربری قبلان ثبت نام کرده است");
+      return res.redirect(req.originalUrl);
+    }
+    data["identified"] = identified;
+  }
+
+  if (req.file) {
+    image = {
+      data: req.file.buffer,
+      contentType: req.file.mimetype,
+    };
+    data["profile"] = image;
+  }
+
+  if (req.body.userName) {
+    data["userName"] = req.body.userName;
+  }
+  const newUser = await userModel.findByIdAndUpdate(req.user._id, data);
+  token = jsonwebtoken.sign({ id: newUser._id }, process.env["KEY"], {
+    expiresIn: "30 day",
+  });
+  res.cookie("token", token, {
+    httpOnly: true,
+    maxAge: 3e9,
+  });
+  req.flash("succses", "با موفقیت اپدیت شد");
+  res.redirect(req.originalUrl);
+};
+
 module.exports = {
+  edit,
   singup,
   login,
   resetPassword,

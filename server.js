@@ -43,7 +43,7 @@ const productRouter = require("./router/product");
 const CartRouter = require("./router/cart");
 const BlogRouter = require("./router/blog");
 const orderRouter = require("./router/order");
-
+const commentRouter = require("./router/comment");
 //Router
 app.use("/", pages);
 app.use("/auth", authRouter);
@@ -53,7 +53,7 @@ app.use("/product", productRouter);
 app.use("/cart", CartRouter);
 app.use("/blog", BlogRouter);
 app.use("/order", orderRouter);
-
+app.use("/comment", commentRouter);
 //404 Page
 app.use(userInfo, (req, res) => {
   res.render("404");

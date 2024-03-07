@@ -46,6 +46,8 @@
                             <th>تعداد فروش</th>
                             <th>تعداد محصول در انبار</th>
                             <th>عکس محصول</th>
+                            <th>تخفیف دارد؟</th>
+                            <th>میزان تخفیف</th>
                         </tr>
                         <% if(products.length>=1){%>
                             <% products.forEach(item=>{%>
@@ -73,6 +75,12 @@
                                     </td>
                                     <td>
                                         <img style="height: 50px; width: 50px;" src="data:<%=item.image.contentType%>;base64,<%=item.image.data.toString('base64') %>" alt="">
+                                    </td>
+                                    <td>
+                                        <%=item.isDiscount %>
+                                    </td>
+                                    <td>
+                                        <%=item.disCount %>
                                     </td>
                                     <td>
                                         <a href="/product/edit/<%=item._id.toString()%>" class="btn btn-sm btn-success">ویرایش</a>

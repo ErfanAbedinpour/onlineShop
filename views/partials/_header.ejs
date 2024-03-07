@@ -76,7 +76,7 @@
                 <li >        
                     <div class="product-container">
                         <div class="product-count"><%= locals.messages.ordcount %></div>
-                        <a href="/order/Follow/" style="padding-left: 10px;">سفارشات</a>
+                        <a href="/order/Follow/" style="padding-left: 20px;">سفارشات</a>
                     </div>
                 </li>
             <% } %>
@@ -85,7 +85,7 @@
             <ul class="nav navbar-nav mr-auto navbar-right">
                 <a  href="/blog/" style="padding-left: 13px; color: white;">مقالات</a>
                 <li><a  class="page-scroll" href="#products" color: white;">محصولات پر بازدید</a></li>
-                <a  href="/product/" style="padding-left: 13px; color: white;">همه محصولات</a>
+                <a  href="/product/" style="padding-left: 13px; padding-right: 12px; color: white;">همه محصولات</a>
                 <li><a  class="page-scroll" href="#contact" color: white;">تماس با ما</a></li>
                 <a href="/aboutme" style="padding-left: 13px; color: white;">درباره ما</a>
             </ul>
@@ -114,10 +114,10 @@
                     <li class="profile-circle">
                         <img class="profile-img" src="<%=locals.messages.profile %>" alt="User Avatar">    
                     </li>
-                    <li class="product-container">
+                    <div class="product-container">
                         <div class="product-count"><%= locals.messages.cartCount%></div>
                         <a href="/cart/"><img src="/img/cart.png" alt="عکس محصول" class="product-image" style="height: 30px; "></a>
-                    </li>                    
+                    </div>                    
                 </ul>
 
             <% } %>

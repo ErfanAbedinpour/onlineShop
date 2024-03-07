@@ -75,10 +75,12 @@ const addUser = async (req, res) => {
   res.redirect("/");
 };
 
+const search = async (req, res) => {};
 module.exports = {
   showUsers,
   ban,
   remove,
   addUser,
   unBan,
+  search,
 };

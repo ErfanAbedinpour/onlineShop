@@ -7,7 +7,7 @@ const userInfo = async (req, res, next) => {
     req.flash("isLogin", true);
     req.flash("userName", req.user.userName);
     req.flash("mailCount", req.mailCount);
-    if (Object.keys(req.user.profile).length != 0) {
+    if (req.user.profile.data) {
       profile = `data:${
         req.user.profile.contentType
       };base64,${req.user.profile.data.toString("base64")}`;

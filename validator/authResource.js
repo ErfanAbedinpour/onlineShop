@@ -129,6 +129,7 @@ const ProductAdd = joi.object({
     .error(new Error("به هر حال یک مدلی هم داره دیگ؟")),
   invent: joi.string().required().error(new Error("لطفا تعداد را وارد کنید")),
   categorie: joi.string().required(),
+  disCount: joi.string().allow(),
 });
 
 module.exports = {

@@ -34,7 +34,11 @@
             </div>
             <div>
               <h6 class="text-right">نام محصول :<%=product.title %></h6>
-              <p class="text-right">قیمت :<%=product.price %></p>
+              <% if(product.isDiscount) {%>
+                <p class="text-right">قیمت :<del><%=product.price %></del> <%=product.price - +product.disCount %></p>
+              <% }else {%>
+                <p class="text-right">قیمت :<%=product.price %></p>
+              <% } %>
               <p class="text-right">مدل : <%=product.model %></p>
               <p class="text-right">تعداد موجود : <%=product.invent %></p>
               <p class="text-right">توضیحات: <%=product.describe%></p>
@@ -59,28 +63,30 @@
         </section>
         <div class="container mt-5">
             <h4>نوشتن کامنت</h4>
-            <form>
+            <form method="post" action="/comment/add/<%=product._id.toString()%>">
               <div class="form-group">
                 <label for="comment" style="color: black;">لطفا نظر خود را برای بهبود ما وارد کنید:</label>
-                <textarea class="form-control" rows="5" id="comment"></textarea>
+                <textarea class="form-control" name="text" rows="5" id="comment"></textarea>
               </div>
               <button type="submit" class="btn btn-primary">ثبت</button>
             </form>
             <hr />
-            <h2>کامنت‌ها</h2>
-            <% if(comment.length==0) {%>
-              <h4>کامنتی وجود ندارد</h4>
+            <h4 style="text-align: center;">کامنت‌ها</h4>
+            <br>
+            <% if(comments.length==0) {%>
+              <h5 style="text-align: center;">کامنتی وجود ندارد</h5>
             <% }else {%>
-              <% comment.fotEach(item=>{ %>
-                <div class="card" style="color: black;">
-                  <div class="card-body"><%=item.text%></div>
+              <% comments.forEach(item=>{ %>
+                <div class="card" style="color: black; margin-bottom: 20px;">
+                  <div class="card-body">
+                    <p style="text-align: right; color: grey;"><%=item.user.userName%></p>
+                    <%=item.text%>
+                    <p style="text-align: right; color: gray;"><%=item.date%></p>
+                  </div>
                 </div>
               <% }) %>
             <% } %>
         </div>
-        <footer class="footer-section bg-secondary ptb-40">
-          <%-include('partials/_footer') %>
-        </footer>
       </div>
     </div>
     <script src="/js/jquery-3.3.1.min.js"></script>

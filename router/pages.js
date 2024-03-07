@@ -8,12 +8,14 @@ router.get("/", userInfo, async (req, res) => {
     newsProduct: NewProduct,
     viewsProduct: ViewProducts,
     newBlog,
+    disCount,
   } = await getBestViewsAndNews();
 
   res.render("index", {
     NewProduct,
     ViewProducts,
     newBlog,
+    disCount,
   });
 });
 

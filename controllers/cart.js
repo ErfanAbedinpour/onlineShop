@@ -64,6 +64,9 @@ const ShowCarts = async (req, res) => {
   });
   for (let i of Products) {
     var count = itemReapet[i._id];
+    if (i.isDiscount) {
+      i.price = i.price - +i.disCount;
+    }
     maxPrice += i.price * count;
   }
   user.TotlaPrice = maxPrice;

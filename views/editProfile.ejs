@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ویرایش اکانت</title>
+    <link rel="icon" href="img/favicon.png" type="image/png" sizes="16x16">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/themify-icons.css">
+    <link rel="stylesheet" href="/fonts/flaticon.css">
+    <link rel="stylesheet" href="/css/magnific-popup.css">
+    <link href="/css/owl.theme.default.min.css" rel="stylesheet">
+    <link href="/css/owl.carousel.min.css" rel="stylesheet">
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
+    <link href="/css/responsive.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/authStyle.css">
+</head>
+
+<body>
+    <div id="main" class="main-content-wraper">
+        <div class="main-content-inner">
+            <header class="header">
+                <%-include('partials/_header') %>
+            </header>
+            <section id="hero" class="section-hero section-rotate">
+                <%-include('partials/_title') %>
+            </section>
+            <div class="wrapper" style="background-color: #f1f1f1">
+                <div class="form-container"  >
+                    <div class="form-inner">
+                        <form action="/auth/edit/" class="login" method="post" enctype="multipart/form-data">
+                            <% if(locals.messages.error) {%>
+                                <h5 style="color: red; text-align: center;">
+                                    <%=locals.messages.error%>
+                                </h5>
+                            <% }else if(locals.messages.succses) {%>
+                                <h5 style="color: green; text-align: center;">
+                                    <%=locals.messages.succses%>
+                                </h5>
+                            <% } %>
+                            <div class="field">
+                                <input type="text" placeholder="نام کاربری جدید را وارد کنید" name="userName">
+                            </div>
+                            <div class="field">
+                                <input type="text" placeholder=" ایمیل یا شماره تماس جدید را وارد کنید"  name="identified">
+                            </div>
+                            <div class="field">
+                                <input type="password" placeholder="رمز عبور جدید" name="password">
+                            </div>
+                            <div class="field">
+                                <input type="password" placeholder="تکرار رمز عبور" name="confirmPassword">
+                            </div>
+                            <div class="field">
+                                <input type="password" placeholder="رمز قدیمی" name="oldPass" required>
+                            </div>
+                            <br>
+                            <label for="user_profile" style="text-align: center; color:black; margin-bottom: 10px;">لطفا پروفایل خود را اپلود کنید</label>
+                            <input type="file" name="profile" id="user_profile" style="color: black;">
+                            <div class="field btn">
+                                <div class="btn-layer"></div>
+                                <input type="submit" value="تغییر مشخصات">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <footer class="footer-section bg-secondary ptb-40">
+                <%-include('partials/_footer')%>
+            </footer>
+        </div>
+    </div>
+    <script src="/js/jquery-3.3.1.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/jquery.easeScroll.min.js"></script>
+    <script src="/js/owl.carousel.min.js"></script>
+    <script src="/js/jquery.easing.min.js"></script>
+    <script src="/js/magnific-popup.min.js"></script>
+    <script src="/js/scripts.js"></script>
+</body>
+
+</html>

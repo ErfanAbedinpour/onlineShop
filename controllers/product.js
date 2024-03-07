@@ -1,6 +1,7 @@
 const productModel = require("../models/product");
 const cartModel = require("../models/cart");
 const CommentModel = require("../models/comments");
+const userModel = require("../models/user");
 const Blog = require("../models/blog");
 //show product With Category
 const ShowProducts = async (req, res) => {
@@ -13,6 +14,7 @@ const ShowProducts = async (req, res) => {
   const graphic = await productModel.find({
     categorie: "graphic",
   });
+
   res.render("productGrid", {
     computerProduct: computer,
     accountProduct: account,
@@ -38,13 +40,17 @@ const addProduct = async (req, res) => {
       req.flash("error", "لطفا فرمت فایل صحیح نیست");
       return res.redirect(req.originalUrl);
     }
-    const { title, describe, price, categorie, invent, model } = req.body;
+    const { title, describe, price, categorie, invent, model, disCount } =
+      req.body;
+
     const p = new productModel({
       title,
       price: price.trim(),
       invent,
       describe: describe.trim(),
       categorie,
+      isDiscount: +disCount ? true : false,
+      disCount,
       image: {
         data: req.file.buffer,
         contentType: req.file.mimetype,
@@ -68,14 +74,20 @@ const productDetails = async (req, res) => {
   const product = await productModel.findByIdAndUpdate(id, {
     $inc: { view: 1 },
   });
-  const comments = await CommentModel.find({ _id: { $in: product.comments } });
+  const comments = await CommentModel.find({
+    _id: { $in: product.comments },
+  });
+  comments.map(async (item) => {
+    let user = await userModel.findById(item.user);
+    return (item["user"] = user);
+  });
   const userCart = await cartModel.findOne({ user: req.user._id.toString() });
   if (userCart) {
     if (userCart.products.includes(id)) {
       isOnCart = true;
     }
   }
-  console.log("Comments is", product.comments);
+  console.log("Comment is", comments);
   res.render("productdetails", {
     product,
     isOnCart,
@@ -122,10 +134,12 @@ const getBestViewsAndNews = async () => {
 
   const viewsProduct = await productModel.find({}).sort({ view: -1 }).limit(5);
   const newBlog = await Blog.find({}).sort({ date: -1 }).limit(5);
+  const disCount = await productModel.find({ isDiscount: true }).limit(5);
   return {
     newsProduct,
     viewsProduct,
     newBlog,
+    disCount,
   };
 };
 
@@ -141,12 +155,14 @@ const editPageRender = async (req, res) => {
 
 //Edit Product
 const editProduct = async (req, res) => {
-  const { title, describe, price, categorie, invent } = req.body;
+  const { title, describe, price, categorie, invent, disCount } = req.body;
   const { id } = req.params;
   const data = {
     title,
     price: price.trim(),
     invent,
+    isDiscount: disCount ? true : false,
+    disCount,
     describe: describe.trim(),
     categorie,
     user: req.user._id,
